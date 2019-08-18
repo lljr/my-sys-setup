@@ -1,0 +1,130 @@
+#+STARTUP: overview hidestars
+#+AUTHOR: nojrl
+#+PROPERTY: header-args:emacs-lisp :tangle ~/.emacs.d/init.el :comments no :results silent
+
+
+* Prettify Symbols
+#+BEGIN_SRC emacs-lisp
+  (global-prettify-symbols-mode t)
+
+  (defun my-add-pretty-lambda ()
+      "Make some word or string show as pretty Unicode symbols"
+      (push '("lambda" . 955) prettify-symbols-alist)	      ; λ
+      (push '("->" . 8594) prettify-symbols-alist)              ; →
+      (push '("=>" . 8658) prettify-symbols-alist)              ; ⇒
+      (push '("map" . 8614) prettify-symbols-alist) 	      ; ↦
+	      )
+
+  (add-hook 'tex-mode-hook 'my-add-pretty-lambda)
+
+  (add-hook 'js-mode-hook (lambda ()
+			    "Beautify Javascript Keywords"
+			    (my-add-pretty-lambda)))
+
+  (add-hook 'org-mode-hook (lambda ()
+			     "Beautify Org Checkbox Symbol"
+			     (push '("[ ]" .  "▢") prettify-symbols-alist)
+			     (push '("*" .  "◉") prettify-symbols-alist)
+			     (push '("[X]" . "☑" ) prettify-symbols-alist)
+			     (push '("[-]" . "❍" ) prettify-symbols-alist)))
+
+  (add-hook 'emacs-lisp-mode-hook
+	    (lambda ()
+	      "Beautify Emacs Symbols"
+	      (push '("<=" . "≤") prettify-symbols-alist)))
+#+END_SRC
+* Custom Prefix Keys
+Custom prefix keys for things I use often
+#+BEGIN_SRC emacs-lisp
+  
+  ;; jump to file useful for opening imgs in html 'img' tag
+  (global-set-key (kbd "<f8>") 'find-file-at-point)
+  (global-set-key (kbd "<s-return>") 'delete-other-windows)
+
+  ;; s-z for commonly used keys
+  (define-prefix-command 'my-super-z-map)
+  (global-set-key (kbd "s-z") 'my-super-z-map)
+
+  (define-key my-super-z-map (kbd "f") 'counsel-rg)	   ; find in current working directory
+  (define-key my-super-z-map (kbd "o") 'browse-url-at-point) ; open url
+
+
+  (defun my-update-and-tangle-package-config ()
+    "Meant to be used exclusively after editing `emacs-pkgs-config.org'."
+    (interactive)
+    (if (not (get-buffer "emacs-pkgs-config.org"))
+    (message "You cannot call this function in this buffer.")
+      (progn
+    (save-buffer)
+    (org-babel-tangle))))
+
+  (define-prefix-command 'my-f9-key-map)
+  (global-set-key (kbd "<f9>") 'my-f9-key-map)
+  (define-key my-f9-key-map (kbd "<f9>") 'my-update-and-tangle-package-config)
+#+END_SRC
+* Elisp lessons
+#+begin_src emacs-lisp
+  ;; From Emacs Lisp Intro
+  ;;; =========================== ============== ============ =========== =====
+  ;; (defun my/check-buffer-exists (name)
+  ;;   "Send a message to echo area if buffer NAME exists."
+  ;;   (interactive "sBuffer name: ")
+  ;;   (if (get-buffer name)
+  ;;       (message "The buffer %s exists" name)
+  ;;     (message "Sorry, the buffer, %s, does not exist." name)))
+
+  ;; ============================Elisp Confusion===============================
+  ;; (defun my-first-optional-arg (&optional number)
+  ;;   "Sends a message if `fill-column' is greater than or less than NUMBER."
+  ;;   (interactive "P")
+  ;;   (or number (setq number 56))
+  ;;   (if (>= number fill-column)
+  ;;       (message "%d is greater than or equal to %d" number fill-column)
+  ;;     (message "%d is less than %d" number fill-column)))
+
+  ;; (defun my-second-optional-arg (&optional number)
+  ;;   "Sends a message if `fill-column' is greater than or less than NUMBER."
+  ;;   (interactive "p")
+  ;;   (or number (setq number 56))
+  ;;   (if (>= number fill-column)
+  ;;       (message "%d is greater than or equal to %d" number fill-column)
+  ;;     (message "%d is less than %d" number fill-column)))
+
+  ;; (defun my-third-optional-arg (&optional number)
+  ;;   "Sends a message if `fill-column' is greater than or less than NUMBER."
+  ;;   (interactive "P")
+  ;;   (or number (setq (prefix-numeric-value number) 56))
+  ;;   (if (>= number fill-column)
+  ;;       (message "%d is greater than or equal to %d" number fill-column)
+  ;;     (message "%d is less than %d" number fill-column)))
+
+  ;; (defun my-fourth-optional-arg (&optional number)
+  ;;   "Sends a message if `fill-column' is greater than or less than NUMBER."
+  ;;   (interactive "p")
+  ;;   (or number (setq (prefix-numeric-value number) 56))
+  ;;   (if (>= number fill-column)
+  ;;       (message "%d is greater than or equal to %d" number fill-column)
+  ;;     (message "%d is less than %d" number fill-column)))
+#+end_src
+* Notes
+** Using Emacs as a Database Client
+
+   "First you have to associated an SQL file with a connection. While in some .sql file execute M-x sql-set-product and
+   type postgres. Afterwards do M-x sql-set-sqli-buffer and select the name of the connection buffer you want to use
+   (it’s probably called *SQL* if you have only one connection buffer). Now you’ll be able to use commands like
+   sql-send-region (C-c C-r) from the .sql buffer and the code from the region will be executed in the associated
+   connection buffer."
+
+   [[https://emacsredux.com/blog/2013/06/13/using-emacs-as-a-database-client/][More..]]
+
+*** tldr;
+    1. =M-x sql-postgres=
+    2. Enter DB credentials
+    3. open a =.sql= file
+    4. execute =M-x sql-set-product= and type =postgres=
+    5. =M-x sql-set-sqli-buffer=
+    6. select =*SQL*=
+    7. use commands like =sql-send-region= (=C-c C-r=) from the .sql buffer
+
+** On Ubuntu
+   For Flask/Postgres Python needs =Psycopg2= so you need to run [[https://stackoverflow.com/a/41852419][these]] in Terminal before
