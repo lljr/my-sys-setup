@@ -2,6 +2,124 @@
 #+AUTHOR: nojrl
 #+PROPERTY: header-args:emacs-lisp :tangle ~/.emacs.d/init.el :comments no :results silent
 
+* Find File In Project 
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c f" 'find-file-in-project))
+
+#+END_SRC
+* Magit
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c m") 'magit-status)
+  ;; (setq magit-completing-read-function 'ivy-completing-read)
+#+END_SRC
+
+* Dired
+#+BEGIN_SRC emacs-lisp
+  (with-eval-after-load 'dired
+    (dired-hide-details-mode 1)
+    (setq dired-recursive-copies (quote always) ; “always” means no asking
+	  dired-recursive-deletes (quote top) ; “top” means ask once
+	  dired-dwim-target t))
+#+END_SRC
+* Ibuffer
+manage several buffers interactively
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+  (setq ibuffer-saved-filter-groups
+	(quote (("default"
+		 ("dired" (mode . dired-mode))
+		 ("org" (name . "^.*org$"))
+		 ("IRC" (or (mode . circe-channel-mode) (mode . circe-server-mode)))
+		 ("web" (or (mode . web-mode)
+			    (mode . scss-mode)
+			    (mode . css-mode)
+			    (mode . html-mode)
+			    (mode . mhtml-mode)))
+		 ("shell" (or (mode . eshell-mode) (mode . shell-mode)))
+		 ("programming" (or (mode . python-mode)
+				    (mode . c++-mode)
+				    (mode . js-mode)
+				    (mode . lisp-mode)
+				    (mode . c-mode)
+				    (mode . clojure-mode)))
+		 ("emacs" (or (name . "^\\*scratch\\*$")
+			      (name . "^\\*Messages\\*$")
+			      (name . "^\\*Warnings\\*$")))))))
+
+  (with-eval-after-load 'ibuffer
+    (ibuffer-auto-mode 1)
+    (ibuffer-switch-to-saved-filter-groups "default")
+    ;; Don't show filter groups if there are no buffers in that group
+    (setq ibuffer-show-empty-filter-groups nil
+	  ;; Don't ask for confirmation to delete marked buffers
+	  ibuffer-expert t))
+#+END_SRC
+* Web Development
+
+** Emmet
+#+BEGIN_SRC emacs-lisp
+  (with-eval-after-load 'emmet-mode
+    (setq emmet-move-cursor-between-quotes t      ;  cursor to be positioned between first empty quotes after expanding
+	  emmet-self-closing-tag-style " /"))
+#+END_SRC
+
+** CSS
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+#+END_SRC
+
+** HTML
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'mhtml-mode-hook 'emmet-mode)
+#+END_SRC
+
+** Web Mode
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'web-mode-hook 'emmet-mode)
+  (add-hook 'web-mode-hook (lambda () (setq emmet-expand-jsx-className? t)))   	; expand 'className="..."' instead of 'class="..."'
+
+  (add-to-list 'auto-mode-alist '("/templates/.*\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.\\(handlebars\\|hbs\\)\\'" . web-mode))
+
+  (with-eval-after-load 'web-mode
+    (setq	web-mode-engines-alist
+	  '(("handlebars"    . "\\.handlebars\\'")
+	    ("jinja" . "./templates/.*\\.html?\\'"))
+	  web-mode-content-types-alist
+	  '(("jsx" . "/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'")))
+  
+    (setq web-mode-enable-css-colorization t
+	  web-mode-enable-current-element-highlight t
+	  web-mode-enable-current-column-highlight t
+	  web-mode-markup-indent-offset 2
+	  web-mode-code-indent-offset 2
+	  web-mode-enable-auto-closing t
+	  web-mode-enable-auto-opening t
+	  web-mode-enable-auto-pairing nil
+	  web-mode-enable-auto-indentation nil
+	  web-mode-enable-auto-quoting t
+	  web-mode-enable-html-entities-fontification t))
+
+#+END_SRC
+
+* Python 
+#+BEGIN_SRC emacs-lisp
+  (setq python-shell-interpreter "python3"
+	python-indent-offset 4)
+
+  (elpy-enable)
+#+END_SRC
+
+* Javascript
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'js-mode-hook 'js2-minor-mode)
+  (add-to-list 'interpreter-mode-alist '("node" . js2-mode)) ; hook it in for shell scripts running via node.js
+  (setq js-indent-level 2
+	js-chain-indent t)
+
+#+END_SRC
 
 * Prettify Symbols
 #+BEGIN_SRC emacs-lisp
