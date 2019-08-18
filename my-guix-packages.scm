@@ -14,7 +14,7 @@
    "blender"
    "icecat"
 
-   ;; Programs
+   ;; Programs/Tools
    "git"
    "node"
    "openjdk"
@@ -27,10 +27,14 @@
    "artanis"
    "haunt"
 
-   ;; Emacs
+   ;; Emacs Packages
    "emacs-guix"
    "emacs-aggresive-indent"
    "emacs-find-file-in-project"
    "emacs-geiser"
    "emacs-magit"
+   "emacs-js2-mode"
+   "emacs-elpy"
+   "emacs-emmet-mode"
+   "emacs-web-mode"
    ))
