@@ -175,7 +175,7 @@ manage several buffers interactively
 * Yasnippet
 Template system for Emacs
 #+BEGIN_SRC emacs-lisp
-  (yas-reload-all)
+  (setq yas-snippet-dirs '("~/my-sys-setup/snippets"))
 
   ;; Activate in these as minor mode
   (add-hook 'prog-mode-hook #'yas-minor-mode)
@@ -188,8 +188,6 @@ Template system for Emacs
   (add-hook 'emacs-lisp-mode-hook #'yas-minor-mode)
   (add-hook 'css-mode-hook #'yas-minor-mode)
   (add-hook 'sh-mode-hook #'yas-minor-mode)
-
-  (setq yas-snippet-dirs '("~/my-sys-setup/snippets")
 #+END_SRC
 * Web Development
 
