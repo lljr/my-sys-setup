@@ -262,6 +262,10 @@ Template system for Emacs
 
 #+END_SRC
 
+* Clojure
+#+begin_src emacs-lisp
+#+end_src
+
 * C/C++
 [[https://www.emacswiki.org/emacs/AaronL][Copy paste from here]]
 #+BEGIN_SRC emacs-lisp
