@@ -138,6 +138,8 @@ manage several buffers interactively
   ;; (global-set-key (kbd "C-c j") 'counsel-git-grep)
   ;; (global-set-key (kbd "C-x l") 'counsel-locate)
 
+  (ivy-rich-mode 1)
+  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
   ;; Ivy Actions
 
   (defun my-comment-line-action (_line)
