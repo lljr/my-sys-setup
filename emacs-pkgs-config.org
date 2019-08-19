@@ -69,7 +69,7 @@
 * Magit
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-c m") 'magit-status)
-  ;; (setq magit-completing-read-function 'ivy-completing-read)
+  (setq magit-completing-read-function 'ivy-completing-read)
 #+END_SRC
 
 * Dired
