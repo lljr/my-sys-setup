@@ -47,4 +47,5 @@
    "emacs-iedit"
    "emacs-yasnippet"
    "emacs-org"
+   "emacs-ivy-rich"
    ))
