@@ -47,5 +47,4 @@
    "emacs-iedit"
    "emacs-yasnippet"
    "emacs-org"
-   "emacs-highlight-sexp"
    ))
