@@ -319,13 +319,42 @@ Template system for Emacs
 * Org
 #+begin_src emacs-lisp
   (global-set-key (kbd "<f6>") 'org-capture)
+
   ;; TODO Setup later
-         ;; :map org-mode-map
-         ;; ("s-j o" . counsel-org-goto)
-         ;; ("s-j j" . counsel-org-goto-all)
-         ;; ("s-f" . counsel-org-file)
-         ;; ("s-r" . avy-org-refile-as-child)
-         ;; ("s-i" . my/copy-id-to-clipboard)
+  ;; :map org-mode-map
+  ;; ("s-j o" . counsel-org-goto)
+  ;; ("s-j j" . counsel-org-goto-all)
+  ;; ("s-f" . counsel-org-file)
+  ;; ("s-r" . avy-org-refile-as-child)
+  ;; ("s-i" . my/copy-id-to-clipboard)
+
+  (with-eval-after-load 'org
+    (visual-line-mode 1) ; wrap lines
+    (setq org-src-fontify-natively t    ; highlight syntax in code source blocks
+          ;; org-ditaa-jar-path "~/.emacs.d/ditaa-0.11.0-standalone.jar"
+          org-latex-pdf-process
+          (let
+              ;; https://tex.stackexchange.com/questions/2099/how-to-include-svg-diagrams-in-latex
+              ((cmd (concat "lualatex -interaction=nonstopmode --shell-escape"
+                            " --synctex=1"
+                            ;; https://tex.stackexchange.com/questions/124246/uninformative-error-message-when-using-auctex
+                            "--file-line-error"
+                            " -output-directory %o %f")))
+            (list cmd
+                  "cd %o; if test -r %b.idx; then makeindex %b.idx; fi"
+                  "cd %o; bibtex %b"
+                  cmd
+                  cmd))
+          )
+    )
+
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((shell . t)
+     (latex . t)
+     (python . t)
+     (ditaa . t)))
 #+end_src
 * PDF Tools
 #+BEGIN_SRC emacs-lisp
