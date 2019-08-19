@@ -312,6 +312,7 @@ Template system for Emacs
 	      "Beautify Emacs Symbols"
 	      (push '("<=" . "≤") prettify-symbols-alist)))
 #+END_SRC
+
 * PDF Tools
 #+BEGIN_SRC emacs-lisp
   (pdf-loader-install)
