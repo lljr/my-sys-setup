@@ -1,10 +1,67 @@
 #+STARTUP: overview hidestars
 #+AUTHOR: nojrl
 #+PROPERTY: header-args:emacs-lisp :tangle ~/.emacs.d/init.el :comments no :results silent
-
-* Find File In Project 
+* General Emacs Setup
 #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-c f" 'find-file-in-project))
+  (setq-default inhibit-startup-message t ; don't show default emacs startup screen
+   window-combination-resize t            ; Resize windows proportionally
+   indent-tabs-mode nil                   ; Stop using tabs to indent
+   indent-tabs-mode nil 			; use spaces not tab
+   tab-width 4 				; change default tab width
+   )
+
+  ;; toggle features that are turned off in a fresh Emacs install
+  (put 'downcase-region 'disabled nil) ; allow me to use C-x C-l (downcase region)
+  (put 'upcase-region 'disabled nil) ; allow me to use C-x C-u (capitalize
+  (put 'narrow-to-region 'disabled nil) 	; allow me to narrow to region
+
+  ;; Tweaking Registers
+
+  ;; Useful Register setup when appending/prepending
+  (setq register-separator ?+)
+  (set-register register-separator "\n\n")
+
+  ;; Reserve `z' register to jump to config quickly
+  (set-register ?z '(file . "~/my-sys-setup/emacs-pkgs-config.org"))
+
+  ;; Useful functionality
+  (add-hook 'before-save-hook 'delete-trailing-whitespace) ; remove trailing whitespace on save
+  (add-hook 'after-save-hook
+	;; Emacs will make a script file executable if it decides it is one
+	'executable-make-buffer-file-executable-if-script-p)
+
+#+END_SRC
+* Changes to default Emacs UI
+#+BEGIN_SRC emacs-lisp
+  (tool-bar-mode -1)			; remove toolbar
+  (menu-bar-mode -1)			; delete menu bar
+  (scroll-bar-mode -1) 			; remove scroll bar
+
+  ;; Prompts that require 'yes' or 'no' accept 'y' or 'n'
+  (fset 'yes-or-no-p 'y-or-n-p)
+
+  ;; Remember cursor position, for emacs 25.1 or later
+  (save-place-mode 1)
+
+  (display-time-mode 1) ; display time in modeline
+
+  (setq ns-pop-up-frames nil       ; open files in an exising frame
+    )
+
+  (blink-cursor-mode 0)			; stop cursor blinking
+  (global-hl-line-mode +1)		; highlight current active line
+
+  ;; Change default hl-line face
+  (with-eval-after-load 'hl-line
+    (set-face-background 'hl-line "#f0f5ff"))
+
+  ;; Add some minor color theme
+  (set-face-attribute 'default nil :background "floral white")
+  (set-face-attribute 'font-lock-comment-face nil :foreground "DarkSeaGreen4")
+#+END_SRC
+* Find File In Project
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c f") 'find-file-in-project)
 
 #+END_SRC
 * Magit
@@ -15,11 +72,14 @@
 
 * Dired
 #+BEGIN_SRC emacs-lisp
-  (with-eval-after-load 'dired
-    (dired-hide-details-mode 1)
-    (setq dired-recursive-copies (quote always) ; “always” means no asking
-	  dired-recursive-deletes (quote top) ; “top” means ask once
-	  dired-dwim-target t))
+  (setq dired-recursive-copies (quote always) ; “always” means no asking
+        dired-recursive-deletes (quote top) ; “top” means ask once
+        dired-dwim-target t)
+
+  (add-hook 'dired-mode-hook '(lambda ()
+                                (dired-hide-details-mode 1)))
+
+  (put 'dired-find-alternate-file 'disabled nil)
 #+END_SRC
 * Ibuffer
 manage several buffers interactively
@@ -27,33 +87,109 @@ manage several buffers interactively
   (global-set-key (kbd "C-x C-b") 'ibuffer)
 
   (setq ibuffer-saved-filter-groups
-	(quote (("default"
-		 ("dired" (mode . dired-mode))
-		 ("org" (name . "^.*org$"))
-		 ("IRC" (or (mode . circe-channel-mode) (mode . circe-server-mode)))
-		 ("web" (or (mode . web-mode)
-			    (mode . scss-mode)
-			    (mode . css-mode)
-			    (mode . html-mode)
-			    (mode . mhtml-mode)))
-		 ("shell" (or (mode . eshell-mode) (mode . shell-mode)))
-		 ("programming" (or (mode . python-mode)
-				    (mode . c++-mode)
-				    (mode . js-mode)
-				    (mode . lisp-mode)
-				    (mode . c-mode)
-				    (mode . clojure-mode)))
-		 ("emacs" (or (name . "^\\*scratch\\*$")
-			      (name . "^\\*Messages\\*$")
-			      (name . "^\\*Warnings\\*$")))))))
+    (quote (("default"
+         ("dired" (mode . dired-mode))
+         ("org" (name . "^.*org$"))
+         ("IRC" (or (mode . circe-channel-mode) (mode . circe-server-mode)))
+         ("web" (or (mode . web-mode)
+                (mode . scss-mode)
+                (mode . css-mode)
+                (mode . html-mode)
+                (mode . mhtml-mode)))
+         ("shell" (or (mode . eshell-mode) (mode . shell-mode)))
+         ("programming" (or (mode . python-mode)
+                    (mode . c++-mode)
+                    (mode . js-mode)
+                    (mode . lisp-mode)
+                    (mode . c-mode)
+                    (mode . clojure-mode)))
+         ("emacs" (or (name . "^\\*scratch\\*$")
+                  (name . "^\\*Messages\\*$")
+                  (name . "^\\*Warnings\\*$")))))))
 
-  (with-eval-after-load 'ibuffer
-    (ibuffer-auto-mode 1)
-    (ibuffer-switch-to-saved-filter-groups "default")
-    ;; Don't show filter groups if there are no buffers in that group
-    (setq ibuffer-show-empty-filter-groups nil
-	  ;; Don't ask for confirmation to delete marked buffers
-	  ibuffer-expert t))
+   ;; Don't show filter groups if there are no buffers in that group
+   (setq ibuffer-show-empty-filter-groups nil
+      ;; Don't ask for confirmation to delete marked buffers
+      ibuffer-expert t)
+
+   (add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (ibuffer-auto-mode 1)
+            (ibuffer-switch-to-saved-filter-groups "default")))
+#+END_SRC
+* Ivy
+#+BEGIN_SRC emacs-lisp
+  (counsel-mode)
+
+  ;; (setq counsel-grep-base-command
+  ;;     "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
+
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
+  (setq ivy-count-format "%d/%d ")
+  (setq ivy-display-style 'fancy)
+
+  (global-set-key (kbd "s-s") 'counsel-grep-or-swiper)
+  (global-set-key (kbd "C-c j") 'counsel-git-grep)
+  (global-set-key (kbd "C-c C-r") 'ivy-resume)
+  ;; (global-set-key (kbd "C-c j") 'counsel-git-grep)
+  ;; (global-set-key (kbd "C-x l") 'counsel-locate)
+
+  ;; Ivy Actions
+
+  (defun my-comment-line-action (_line)
+    "Comment or uncomment currently selected LINE.
+    This function is intended as a `swiper' action."
+    (comment-or-uncomment-region (line-beginning-position)
+         (line-end-position)))
+
+  (defun my-kill-line-action (_line)
+    "Kill currently selected LINE.
+    This function is intended as a `swiper' action."
+    (kill-whole-line 1))
+
+  (ivy-add-actions
+   'swiper
+   '(;;(";" my-comment-line-action "comment line")
+     ("k" my-kill-line-action "kill whole line")))
+#+END_SRC
+* Company
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'after-init-hook 'global-company-mode)
+
+  ;; With this code, yasnippet will expand the snippet if company didn't complete the word
+  ;; replace company-complete-common with company-complete if you're using it
+  ;; https://gist.github.com/sebastiencs/a16ea58b2d23e2ea52f62fcce70f4073
+  (advice-add 'company-complete :before (lambda () (setq my-company-point (point))))
+  (advice-add 'company-complete :after (lambda ()
+                       (when (equal my-company-point (point))
+                         (yas-expand))))
+  (with-eval-after-load 'company
+      (setq company-echo-delay 0   ; disable the delay
+        company-idle-delay 0
+        company-tooltip-limit 10
+        company-tooltip-align-annotations t
+        company-minimum-prefix-length 2))
+#+END_SRC
+* Yasnippet
+Template system for Emacs
+#+BEGIN_SRC emacs-lisp
+  (yas-reload-all)
+
+  ;; Activate in these as minor mode
+  (add-hook 'prog-mode-hook #'yas-minor-mode)
+  (add-hook 'python-mode-hook #'yas-minor-mode)
+  (add-hook 'js-mode-hook #'yas-minor-mode)
+  (add-hook 'web-mode-hook #'yas-minor-mode)
+  (add-hook 'lisp-mode-hook #'yas-minor-mode)
+  (add-hook 'org-mode-hook #'yas-minor-mode)
+  (add-hook 'clojure-mode-hook #'yas-minor-mode)
+  (add-hook 'emacs-lisp-mode-hook #'yas-minor-mode)
+  (add-hook 'css-mode-hook #'yas-minor-mode)
+  (add-hook 'sh-mode-hook #'yas-minor-mode)
+
+  (setq yas-snippet-dirs '("~/my-sys-setup/snippets")
 #+END_SRC
 * Web Development
 
@@ -89,7 +225,7 @@ manage several buffers interactively
 	    ("jinja" . "./templates/.*\\.html?\\'"))
 	  web-mode-content-types-alist
 	  '(("jsx" . "/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'")))
-  
+
     (setq web-mode-enable-css-colorization t
 	  web-mode-enable-current-element-highlight t
 	  web-mode-enable-current-column-highlight t
@@ -104,7 +240,7 @@ manage several buffers interactively
 
 #+END_SRC
 
-* Python 
+* Python
 #+BEGIN_SRC emacs-lisp
   (setq python-shell-interpreter "python3"
 	python-indent-offset 4)
@@ -121,6 +257,31 @@ manage several buffers interactively
 
 #+END_SRC
 
+* C/C++
+[[https://www.emacswiki.org/emacs/AaronL][Copy paste from here]]
+#+BEGIN_SRC emacs-lisp
+  (setq-default c-indent-tabs-mode t     ; Pressing TAB should cause indentation
+		  c-indent-level 4       ; A TAB is equivilent to four spaces
+		  c-argdecl-indent 0     ; Do not indent argument decl's extra
+		  c-tab-always-indent t
+		  backward-delete-function nil) ; DO NOT expand tabs when deleting
+  (c-add-style "my-c-style" '((c-continued-statement-offset 4))) ; If a statement continues on the next line, indent the continuation by 4
+  (defun my-c-mode-hook ()
+    (c-set-style "my-c-style")
+    (c-set-offset 'substatement-open '0) ; brackets should be at same indentation level as the statements they open
+    (c-set-offset 'inline-open '+)
+    (c-set-offset 'block-open '+)
+    (c-set-offset 'brace-list-open '+)   ; all "opens" should be indented by the c-indent-level
+    (c-set-offset 'case-label '+))       ; indent case labels by c-indent-level, too
+  (add-hook 'c-mode-hook 'my-c-mode-hook)
+  (add-hook 'c++-mode-hook 'my-c-mode-hook)
+#+END_SRC
+
+* Windmove
+  #+BEGIN_SRC emacs-lisp
+    (windmove-default-keybindings 'super)
+    (setq windmove-wrap-around t)
+  #+END_SRC
 * Prettify Symbols
 #+BEGIN_SRC emacs-lisp
   (global-prettify-symbols-mode t)
@@ -151,10 +312,14 @@ manage several buffers interactively
 	      "Beautify Emacs Symbols"
 	      (push '("<=" . "≤") prettify-symbols-alist)))
 #+END_SRC
+* PDF Tools
+#+BEGIN_SRC emacs-lisp
+  (pdf-loader-install)
+#+END_SRC
 * Custom Prefix Keys
 Custom prefix keys for things I use often
 #+BEGIN_SRC emacs-lisp
-  
+
   ;; jump to file useful for opening imgs in html 'img' tag
   (global-set-key (kbd "<f8>") 'find-file-at-point)
   (global-set-key (kbd "<s-return>") 'delete-other-windows)
