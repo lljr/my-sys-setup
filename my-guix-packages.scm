@@ -46,6 +46,5 @@
    "emacs-pdf-tools"
    "emacs-iedit"
    "emacs-yasnippet"
-   "emacs-engine-mode"
    "emacs-org"
    ))
