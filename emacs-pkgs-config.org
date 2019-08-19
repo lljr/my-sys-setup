@@ -275,11 +275,6 @@ Template system for Emacs
   (add-hook 'c++-mode-hook 'my-c-mode-hook)
 #+END_SRC
 
-* Windmove
-  #+BEGIN_SRC emacs-lisp
-    (windmove-default-keybindings 'super)
-    (setq windmove-wrap-around t)
-  #+END_SRC
 * Prettify Symbols
 #+BEGIN_SRC emacs-lisp
   (global-prettify-symbols-mode t)
