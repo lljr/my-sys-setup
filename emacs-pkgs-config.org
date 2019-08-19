@@ -58,6 +58,7 @@
   ;; Add some minor color theme
   (set-face-attribute 'default nil :background "floral white")
   (set-face-attribute 'font-lock-comment-face nil :foreground "DarkSeaGreen4")
+  (set-face-background 'region "LightSteelBlue")
 #+END_SRC
 * Find File In Project
 #+BEGIN_SRC emacs-lisp
