@@ -21,7 +21,8 @@
    "guile"
    "recutils"
    "wget"
-   
+   "imagemagick"
+
 
    ;; Guile
    "artanis"
@@ -37,4 +38,12 @@
    "emacs-elpy"
    "emacs-emmet-mode"
    "emacs-web-mode"
+   "emacs-clojure-mode"
+   "emacs-cider"
+   "emacs-ivy"
+   "emacs-company"
+   "emacs-markdown-mode"
+   "emacs-pdf-tools"
+   "emacs-iedit"
+   "emacs-yasnippet"
    ))
