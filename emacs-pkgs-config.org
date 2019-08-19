@@ -318,7 +318,14 @@ Template system for Emacs
 #+END_SRC
 * Org
 #+begin_src emacs-lisp
- (global-set-key (kbd "<f6>") 'org-capture)
+  (global-set-key (kbd "<f6>") 'org-capture)
+  ;; TODO Setup later
+         ;; :map org-mode-map
+         ;; ("s-j o" . counsel-org-goto)
+         ;; ("s-j j" . counsel-org-goto-all)
+         ;; ("s-f" . counsel-org-file)
+         ;; ("s-r" . avy-org-refile-as-child)
+         ;; ("s-i" . my/copy-id-to-clipboard)
 #+end_src
 * PDF Tools
 #+BEGIN_SRC emacs-lisp
