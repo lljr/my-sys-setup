@@ -48,4 +48,7 @@
    "emacs-yasnippet"
    "emacs-org"
    "emacs-ivy-rich"
+   "emacs-htmlize"
+   "emacs-org-reveal"
+   "emacs-magit-todos"
    ))
