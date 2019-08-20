@@ -387,10 +387,6 @@ Custom prefix keys for things I use often
       (progn
     (save-buffer)
     (org-babel-tangle))))
-
-  (define-prefix-command 'my-f9-key-map)
-  (global-set-key (kbd "<f9>") 'my-f9-key-map)
-  (define-key my-f9-key-map (kbd "<f9>") 'my-update-and-tangle-package-config)
 #+END_SRC
 * Elisp lessons
 #+begin_src emacs-lisp
