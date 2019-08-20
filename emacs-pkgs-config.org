@@ -264,11 +264,11 @@ Template system for Emacs
         js-chain-indent t)
 
   ;; TODO Setup Tern? (Company Tern as well)
-
 #+END_SRC
 
 * Clojure
 #+begin_src emacs-lisp
+  ;; TODO configure cider
 #+end_src
 
 * C/C++
@@ -291,36 +291,6 @@ Template system for Emacs
   (add-hook 'c++-mode-hook 'my-c-mode-hook)
 #+END_SRC
 
-* Prettify Symbols
-#+BEGIN_SRC emacs-lisp
-  (global-prettify-symbols-mode t)
-
-  (defun my-add-pretty-lambda ()
-      "Make some word or string show as pretty Unicode symbols"
-      (push '("lambda" . 955) prettify-symbols-alist)	      ; λ
-      (push '("->" . 8594) prettify-symbols-alist)              ; →
-      (push '("=>" . 8658) prettify-symbols-alist)              ; ⇒
-      (push '("map" . 8614) prettify-symbols-alist) 	      ; ↦
-	      )
-
-  (add-hook 'tex-mode-hook 'my-add-pretty-lambda)
-
-  (add-hook 'js-mode-hook (lambda ()
-			    "Beautify Javascript Keywords"
-			    (my-add-pretty-lambda)))
-
-  (add-hook 'org-mode-hook (lambda ()
-			     "Beautify Org Checkbox Symbol"
-			     (push '("[ ]" .  "▢") prettify-symbols-alist)
-			     (push '("*" .  "◉") prettify-symbols-alist)
-			     (push '("[X]" . "☑" ) prettify-symbols-alist)
-			     (push '("[-]" . "❍" ) prettify-symbols-alist)))
-
-  (add-hook 'emacs-lisp-mode-hook
-	    (lambda ()
-	      "Beautify Emacs Symbols"
-	      (push '("<=" . "≤") prettify-symbols-alist)))
-#+END_SRC
 * Org
 #+begin_src emacs-lisp
   (global-set-key (kbd "<f6>") 'org-capture)
@@ -365,32 +335,8 @@ Template system for Emacs
 #+BEGIN_SRC emacs-lisp
   (pdf-loader-install)
 #+END_SRC
-* Custom Prefix Keys
-Custom prefix keys for things I use often
-#+BEGIN_SRC emacs-lisp
-
-  ;; jump to file useful for opening imgs in html 'img' tag
-  (global-set-key (kbd "<f8>") 'find-file-at-point)
-  (global-set-key (kbd "<s-return>") 'delete-other-windows)
-
-  ;; s-z for commonly used keys
-  (define-prefix-command 'my-super-z-map)
-  (global-set-key (kbd "s-z") 'my-super-z-map)
-
-  (define-key my-super-z-map (kbd "f") 'counsel-rg)	   ; find in current working directory
-  (define-key my-super-z-map (kbd "o") 'browse-url-at-point) ; open url
-
-
-  (defun my-update-and-tangle-package-config ()
-    "Meant to be used exclusively after editing `emacs-pkgs-config.org'."
-    (interactive)
-    (if (not (get-buffer "emacs-pkgs-config.org"))
-    (message "You cannot call this function in this buffer.")
-      (progn
-    (save-buffer)
-    (org-babel-tangle))))
-#+END_SRC
 * Rcirc
+Built-in Emacs IRC client
 #+begin_src emacs-lisp
   (add-hook 'rcirc-mode-hook
             (lambda ()
@@ -425,6 +371,134 @@ Custom prefix keys for things I use often
   ;; (setq rcirc-startup-channels-alist
   ;;       '(("\\.freenode\\.net$" "#emacs" "#rcirc")))
 #+end_src
+* Extras
+Nice to have packages and functionality
+**  Already in Emacs
+*** Misc
+ #+begin_src emacs-lisp
+   (show-paren-mode t) ; toggle highlighting matching paren
+
+   (electric-layout-mode 1)  ; adds electricity after inserting chars e.g. in  js ';' starts new line
+
+   (electric-indent-mode +1) ; toggle on the fly re-indentation
+
+   ;; Electric Pairs
+   (add-hook 'mhtml-mode-hook 'electric-pair-local-mode)
+   (add-hook 'emacs-lisp-mode-hook 'electric-pair-local-mode)
+   (add-hook 'clojure-mode-hook 'electric-pair-local-mode)
+   (add-hook 'lisp-interaction-mode-hook 'electric-pair-local-mode)
+   (add-hook 'web-mode-hook 'electric-pair-local-mode)
+   (add-hook 'ielm-mode-hook 'electric-pair-local-mode)
+   (add-hook 'js-mode-hook 'electric-pair-local-mode)
+   (add-hook 'org-mode-hook 'electric-pair-local-mode)
+   (add-hook 'scheme-mode-hook 'electric-pair-local-mode)
+   (add-hook 'python-mode-hook 'electric-pair-local-mode)
+
+   ;; add extra pairs for org mode
+   (defvar org-electric-pairs '((?/ . ?/) (?= . ?=)) "Electric pairs for org-mode.")
+   (defun org-add-electric-pairs ()
+     (setq-local electric-pair-pairs (append electric-pair-pairs org-electric-pairs))
+     (setq-local electric-pair-text-pairs electric-pair-pairs))
+   (add-hook 'org-mode-hook 'org-add-electric-pairs)
+
+   ;; add extra pairs for js-mode
+   (defvar js-mode-electric-pairs '((?` . ?`)) "Electric pairs for js-mode.")
+   (defun js-mode-add-electric-pairs ()
+     (setq-local electric-pair-pairs (append electric-pair-pairs js-mode-electric-pairs))
+     (setq-local electric-pair-text-pairs electric-pair-pairs))
+   (add-hook 'js-mode-hook 'js-mode-add-electric-pairs)
+   (add-hook 'mhtml-mode-hook 'js-mode-add-electric-pairs) ; needs it for `script` tags
+
+   ;; add extra pairs for web mode (jinja)
+   (defvar web-mode-jinja-electric-pairs '((?% . ?%)) "Electric pairs for web-mode.")
+   (defun web-mode-add-jinja-electric-pairs ()
+     (setq-local electric-pair-pairs (append electric-pair-pairs web-mode-jinja-electric-pairs)))
+   (add-hook 'web-mode-hook 'web-mode-add-jinja-electric-pairs)
+
+   ;; Subword Mode
+   (add-hook 'js-mode-hook 'subword-mode)
+   (add-hook 'c-mode-hook 'subword-mode)
+   (add-hook 'c++-mode-hook 'subword-mode)
+   (add-hook 'clojure-mode-hook 'subword-mode)
+ #+end_src
+
+*** Prettify Symbols
+  #+BEGIN_SRC emacs-lisp
+    (global-prettify-symbols-mode t)
+
+    (defun my-add-pretty-lambda ()
+        "Make some word or string show as pretty Unicode symbols"
+        (push '("lambda" . 955) prettify-symbols-alist)	      ; λ
+        (push '("->" . 8594) prettify-symbols-alist)              ; →
+        (push '("=>" . 8658) prettify-symbols-alist)              ; ⇒
+        (push '("map" . 8614) prettify-symbols-alist) 	      ; ↦
+	        )
+
+    (add-hook 'tex-mode-hook 'my-add-pretty-lambda)
+
+    (add-hook 'js-mode-hook (lambda ()
+			      "Beautify Javascript Keywords"
+			      (my-add-pretty-lambda)))
+
+    (add-hook 'org-mode-hook (lambda ()
+			       "Beautify Org Checkbox Symbol"
+			       (push '("[ ]" .  "▢") prettify-symbols-alist)
+			       (push '("*" .  "◉") prettify-symbols-alist)
+			       (push '("[X]" . "☑" ) prettify-symbols-alist)
+			       (push '("[-]" . "❍" ) prettify-symbols-alist)))
+
+    (add-hook 'emacs-lisp-mode-hook
+	      (lambda ()
+	        "Beautify Emacs Symbols"
+	        (push '("<=" . "≤") prettify-symbols-alist)))
+  #+END_SRC
+** Not included in Emacs by default
+*** Rainbow Delimiters
+ #+begin_src emacs-lisp
+   (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+   (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
+   (add-hook 'ielm-mode-hook #'rainbow-delimiters-mode)
+   (add-hook 'lisp-interaction-mode-hook #'rainbow-delimiters-mode)
+   (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
+
+   (custom-set-faces
+          '(rainbow-delimiters-depth-1-face ((t (:foreground "red"))))
+          '(rainbow-delimiters-depth-2-face ((t (:foreground "black"))))
+          '(rainbow-delimiters-depth-3-face ((t (:foreground "cyan3"))))
+          '(rainbow-delimiters-depth-4-face ((t (:foreground "blue"))))
+          '(rainbow-delimiters-depth-5-face ((t (:foreground "gold"))))
+          '(rainbow-delimiters-depth-6-face ((t (:foreground "lavender"))))
+          '(rainbow-delimiters-depth-7-face ((t (:foreground "black"))))
+          '(rainbow-delimiters-depth-8-face ((t (:foreground "magenta"))))
+          '(rainbow-delimiters-depth-9-face ((t (:foreground "red")))))
+ #+end_src
+
+* Custom Prefix Keys
+Custom prefix keys for things I use often
+#+BEGIN_SRC emacs-lisp
+
+  ;; jump to file useful for opening imgs in html 'img' tag
+  (global-set-key (kbd "<f8>") 'find-file-at-point)
+  (global-set-key (kbd "<s-return>") 'delete-other-windows)
+
+  ;; s-z for commonly used keys
+  (define-prefix-command 'my-super-z-map)
+  (global-set-key (kbd "s-z") 'my-super-z-map)
+
+  (define-key my-super-z-map (kbd "f") 'counsel-rg)	   ; find in current working directory
+  (define-key my-super-z-map (kbd "o") 'browse-url-at-point) ; open url
+
+
+  (defun my-update-and-tangle-package-config ()
+    "Meant to be used exclusively after editing `emacs-pkgs-config.org'."
+    (interactive)
+    (if (not (get-buffer "emacs-pkgs-config.org"))
+    (message "You cannot call this function in this buffer.")
+      (progn
+    (save-buffer)
+    (org-babel-tangle))))
+#+END_SRC
+
 * Elisp lessons
 #+begin_src emacs-lisp
   ;; From Emacs Lisp Intro
