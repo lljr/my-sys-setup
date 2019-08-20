@@ -6,9 +6,10 @@
 #+BEGIN_SRC emacs-lisp
   (setq-default inhibit-startup-message t ; don't show default emacs startup screen
    window-combination-resize t            ; Resize windows proportionally
-   indent-tabs-mode nil                   ; Stop using tabs to indent
-   indent-tabs-mode nil 			; use spaces not tab
-   tab-width 4 				; change default tab width
+   display-time-default-load-average nil  ; don't show system load time in modeline
+   indent-tabs-mode nil                   ; stop using tabs to indent
+   indent-tabs-mode nil 			        ; use spaces not tab
+   tab-width 4 				            ; change default tab width
    )
 
   ;; toggle features that are turned off in a fresh Emacs install
@@ -28,8 +29,8 @@
   ;; Useful functionality
   (add-hook 'before-save-hook 'delete-trailing-whitespace) ; remove trailing whitespace on save
   (add-hook 'after-save-hook
-	;; Emacs will make a script file executable if it decides it is one
-	'executable-make-buffer-file-executable-if-script-p)
+    ;; Emacs will make a script file executable if it decides it is one
+    'executable-make-buffer-file-executable-if-script-p)
 
 #+END_SRC
 * Changes to default Emacs UI
