@@ -51,4 +51,6 @@
    "emacs-htmlize"
    "emacs-org-reveal"
    "emacs-magit-todos"
+   "emacs-rainbow-delimiters"
+   "emacs-npm-mode"
    ))
