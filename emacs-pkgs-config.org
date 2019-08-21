@@ -453,6 +453,10 @@ Nice to have packages and functionality
 	        (push '("<=" . "≤") prettify-symbols-alist)))
   #+END_SRC
 ** Not included in Emacs by default
+*** Iedit
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-;") 'iedit-mode)
+#+end_src
 *** Rainbow Delimiters
  #+begin_src emacs-lisp
    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
