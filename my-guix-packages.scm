@@ -26,7 +26,7 @@
 
    ;; Guile
    "artanis"
-   "haunt" "guile-common-mark" "guile-reader"
+   "haunt" "guile-commonmark" "guile-reader"
 
    ;; Emacs Packages
    "emacs-guix"
