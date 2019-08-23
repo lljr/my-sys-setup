@@ -483,11 +483,11 @@ Custom prefix keys for things I use often
 
   ;; jump to file useful for opening imgs in html 'img' tag
   (global-set-key (kbd "<f8>") 'find-file-at-point)
-  (global-set-key (kbd "<C-return>") 'delete-other-windows)
+  (global-set-key (kbd "<C-M-return>") 'delete-other-windows)
 
   ;; s-z for commonly used keys
   (define-prefix-command 'my-super-z-map)
-  (global-set-key (kbd "s-z") 'my-super-z-map)
+  (global-set-key (kbd "C-M-z") 'my-super-z-map)
 
   (define-key my-super-z-map (kbd "f") 'counsel-rg)	   ; find in current working directory
   (define-key my-super-z-map (kbd "o") 'browse-url-at-point) ; open url
