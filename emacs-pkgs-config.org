@@ -156,7 +156,12 @@ manage several buffers interactively
 #+END_SRC
 * Magit
 #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-c m") 'magit-status)
+  (define-prefix-command 'my-magit-prefix-key)
+  (global-set-key (kbd "C-c m") 'my-magit-prefix-key)
+
+  (define-key my-magit-prefix-key (kbd "s") 'magit-status)
+  (define-key my-magit-prefix-key (kbd "d") 'magit-dispatch)
+
   (setq magit-completing-read-function 'ivy-completing-read)
 #+END_SRC
 
