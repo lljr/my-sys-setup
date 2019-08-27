@@ -1,5 +1,5 @@
 #+STARTUP: overview hidestars
-#+AUTHOR: nojrl
+#+AUTHOR: Jonathan
 #+PROPERTY: header-args:emacs-lisp :tangle ~/.emacs.d/init.el :comments no :results silent
 
 * General Emacs Setup
@@ -32,6 +32,8 @@
     ;; Emacs will make a script file executable if it decides it is one
     'executable-make-buffer-file-executable-if-script-p)
 
+  ;; Extra manuals
+  (add-to-list 'Info-default-directory-list "~/Documents/Info")
 #+END_SRC
 * Changes to default Emacs UI
 #+BEGIN_SRC emacs-lisp
