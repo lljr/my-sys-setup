@@ -53,4 +53,5 @@
    "emacs-magit-todos"
    "emacs-rainbow-delimiters"
    "emacs-npm-mode"
+   "emacs-dired-du"
    ))
