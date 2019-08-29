@@ -23,6 +23,8 @@
    "wget"
    "imagemagick"
 
+   ;; MIT Scheme
+   "mit-scheme"
 
    ;; Guile
    "artanis"
