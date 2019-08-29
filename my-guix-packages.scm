@@ -26,9 +26,13 @@
    ;; MIT Scheme
    "mit-scheme"
 
+   ;; Lout
+   "lout"
+
    ;; Guile
    "artanis"
-   "haunt" "guile-commonmark" "guile-reader"
+   "haunt" "guile-commonmark"
+   "guile-reader" "guile-lib"
    "skribilo"
 
    ;; Emacs Packages
