@@ -276,6 +276,17 @@ Template system for Emacs
   ;; TODO Setup Tern? (Company Tern as well)
 #+END_SRC
 
+* Scheme
+#+begin_src emacs-lisp
+  (setq geiser-mode-auto-p nil) ; don't automatically load geiser in scheme buffers
+
+
+  ;; Set up for Skribilo files
+  (add-to-list 'auto-mode-alist '("\\.skr\\'" . scheme-mode))
+  (autoload 'skribe-mode "skribe.el" "Skribe mode." t)
+  (add-hook 'scheme-mode-hook 'skribe-mode)
+#+end_src
+
 * Clojure
 #+begin_src emacs-lisp
   ;; TODO configure cider
