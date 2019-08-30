@@ -57,4 +57,5 @@
    "emacs-rainbow-delimiters"
    "emacs-npm-mode"
    "emacs-dired-du"
+   "emacs-circe"
    ))
