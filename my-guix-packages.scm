@@ -22,12 +22,8 @@
    "recutils"
    "wget"
    "imagemagick"
-
-   ;; MIT Scheme
-   "mit-scheme"
-
-   ;; Lout
-   "lout"
+    "lout"       ; Lout
+   "mit-scheme"  ; MIT Scheme
 
    ;; Guile
    "artanis"
