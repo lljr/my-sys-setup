@@ -284,7 +284,6 @@ Template system for Emacs
   ;; Set up for Skribilo files
   (add-to-list 'auto-mode-alist '("\\.skr\\'" . scheme-mode))
   (autoload 'skribe-mode "skribe.el" "Skribe mode." t)
-  (add-hook 'scheme-mode-hook 'skribe-mode)
 #+end_src
 
 * Clojure
