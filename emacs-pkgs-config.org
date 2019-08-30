@@ -356,41 +356,19 @@ Template system for Emacs
 #+BEGIN_SRC emacs-lisp
   (pdf-loader-install)
 #+END_SRC
-* Rcirc
-Built-in Emacs IRC client
+* Circe
+Client for IRC
 #+begin_src emacs-lisp
-  (add-hook 'rcirc-mode-hook
-            (lambda ()
-              (rcirc-track-minor-mode 1)))
 
-  ;; connect to servers using SSL/TLS
-  (setq rcirc-server-alist
-        '(("irc.freenode.net" :port 6697 :encryption tls
-       :channels ("#rcirc" "#emacs" "#guile"))))
 
-  (setq gnutls-min-prime-bits 1024)
-
-  ;; Adjust the colours of one of the faces.
-  (with-eval-after-load 'rcirc
-    (set-face-foreground 'rcirc-my-nick "red" nil))
-
-  ;; Keep input line at bottom.
-  (add-hook 'rcirc-mode-hook
-        (lambda ()
-          (set (make-local-variable 'scroll-conservatively)
-               8192)))
-
-  ;; Include date in time stamp.
-  (setq rcirc-time-format "%Y-%m-%d %H:%M ")
-
-  ;; Change user info
-  (setq rcirc-default-nick "avocadoras"
-        rcirc-default-user-name ""
-        rcirc-default-full-name "jon rostran")
-
-  ;; Join these channels at startup.
-  ;; (setq rcirc-startup-channels-alist
-  ;;       '(("\\.freenode\\.net$" "#emacs" "#rcirc")))
+  (setq circe-network-options
+        '(("Freenode"
+        ;;   :tls t
+      ;;     :nick "my-nick"
+    ;;       :sasl-username "my-nick"
+  ;;         :sasl-password "my-password"
+          ;; :channels ("#emacs-circe")
+           )))
 #+end_src
 * Extras
 Nice to have packages and functionality
