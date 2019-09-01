@@ -220,7 +220,7 @@ Template system for Emacs
 
 ** HTML
 #+BEGIN_SRC emacs-lisp
-  (add-hook 'mhtml-mode-hook 'emmet-mode)
+  (add-hook 'html-mode-hook 'emmet-mode)
 #+END_SRC
 
 ** Web Mode
