@@ -13,6 +13,7 @@
    "inkscape"
    "blender"
    "icecat"
+   "darktable"
 
    ;; Programs/Tools
    "git"
