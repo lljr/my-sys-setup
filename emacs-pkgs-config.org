@@ -391,6 +391,8 @@ Nice to have packages and functionality
    (add-hook 'org-mode-hook 'electric-pair-local-mode)
    (add-hook 'scheme-mode-hook 'electric-pair-local-mode)
    (add-hook 'python-mode-hook 'electric-pair-local-mode)
+   (add-hook 'css-mode-hook 'electric-pair-local-mode)
+   (add-hook 'less-css-mode-hook 'electric-pair-local-mode)
 
    ;; add extra pairs for org mode
    (defvar org-electric-pairs '((?/ . ?/) (?= . ?=)) "Electric pairs for org-mode.")
