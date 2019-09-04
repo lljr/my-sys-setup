@@ -14,6 +14,7 @@
    "blender"
    "icecat"
    "darktable"
+   "ungoogled-chromium"
 
    ;; Programs/Tools
    "git"
