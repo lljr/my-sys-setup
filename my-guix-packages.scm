@@ -34,7 +34,7 @@
 
    ;; Emacs Packages
    "emacs-guix"
-   "emacs-aggresive-indent"
+   "emacs-aggressive-indent"
    "emacs-find-file-in-project"
    "emacs-geiser"
    "emacs-magit"
