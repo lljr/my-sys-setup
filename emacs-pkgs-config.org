@@ -357,8 +357,6 @@ Template system for Emacs
 * Circe
 Client for IRC
 #+begin_src emacs-lisp
-
-
   (setq circe-network-options
         '(("Freenode"
         ;;   :tls t
