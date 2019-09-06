@@ -291,9 +291,15 @@ Template system for Emacs
 
   (elpy-enable)
 
-  (add-hook 'elpy-mode-hook
-                 (lambda ()
-                   (define-key elpy-mode-map (kbd "C-c v") 'pyvenv-activate)))
+  (defun pyvenv-venv-dwim ()
+    "Ask to activate a virtual environment or deactivate one if active."
+    (interactive)
+    (if pyvenv-virtual-env
+        (pyvenv-deactivate)
+     (pyvenv-activate "venv")))
+
+  (add-hook 'elpy-mode-hook (lambda () (define-key elpy-mode-map (kbd "C-c v") 'pyvenv-venv-dwim)))
+
 #+END_SRC
 
 * Javascript
