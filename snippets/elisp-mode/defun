@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Elisp function
+# key: defn
+# group: elisp
+# contributor: Jon Rostran
+# --
+
+(defun $1 ($2)
+  $0
+)
