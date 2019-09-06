@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Python function
+# key: defn
+# group: python
+# contributor: Jon Rostran
+# --
+
+def $1($2):
+    $0
+    pass
