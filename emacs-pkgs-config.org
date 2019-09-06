@@ -262,8 +262,7 @@ Template system for Emacs
 
   (add-hook 'elpy-mode-hook
                  (lambda ()
-                   (define-key elpy-mode-map "\C-cv"
-                               'pyvenv-activate)))
+                   (define-key elpy-mode-map (kbd "C-c v") 'pyvenv-activate)))
 #+END_SRC
 
 * Javascript
