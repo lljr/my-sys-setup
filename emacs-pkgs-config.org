@@ -64,6 +64,23 @@
   (set-face-attribute 'font-lock-comment-face nil :foreground "DarkSeaGreen4")
   (set-face-background 'region "LightSteelBlue")
 #+END_SRC
+* Custom Prefix Keys
+Custom prefix keys for things I use often
+#+BEGIN_SRC emacs-lisp
+
+  ;; jump to file useful for opening imgs in html 'img' tag
+  (global-set-key (kbd "<f8>") 'find-file-at-point)
+  (global-set-key (kbd "<C-M-return>") 'delete-other-windows)
+
+  ;; s-z for commonly used keys
+  (define-prefix-command 'my-super-z-map)
+  (global-set-key (kbd "C-z") 'my-super-z-map)
+
+  ;; (define-key my-super-z-map (kbd "f") 'counsel-rg)	   ; find in current working directory
+
+  (define-key my-super-z-map (kbd "o") 'browse-url-at-point) ; open url
+#+END_SRC
+
 * Find File In Project
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-c f") 'find-file-in-project)
@@ -474,32 +491,6 @@ Nice to have packages and functionality
           '(rainbow-delimiters-depth-8-face ((t (:foreground "magenta"))))
           '(rainbow-delimiters-depth-9-face ((t (:foreground "red")))))
  #+end_src
-
-* Custom Prefix Keys
-Custom prefix keys for things I use often
-#+BEGIN_SRC emacs-lisp
-
-  ;; jump to file useful for opening imgs in html 'img' tag
-  (global-set-key (kbd "<f8>") 'find-file-at-point)
-  (global-set-key (kbd "<C-M-return>") 'delete-other-windows)
-
-  ;; s-z for commonly used keys
-  (define-prefix-command 'my-super-z-map)
-  (global-set-key (kbd "C-M-z") 'my-super-z-map)
-
-  (define-key my-super-z-map (kbd "f") 'counsel-rg)	   ; find in current working directory
-  (define-key my-super-z-map (kbd "o") 'browse-url-at-point) ; open url
-
-
-  (defun my-update-and-tangle-package-config ()
-    "Meant to be used exclusively after editing `emacs-pkgs-config.org'."
-    (interactive)
-    (if (not (get-buffer "emacs-pkgs-config.org"))
-    (message "You cannot call this function in this buffer.")
-      (progn
-    (save-buffer)
-    (org-babel-tangle))))
-#+END_SRC
 
 * Elisp lessons
 #+begin_src emacs-lisp
