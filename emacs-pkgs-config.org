@@ -88,28 +88,38 @@ Custom prefix keys for things I use often
 #+END_SRC
 * Ivy
 #+BEGIN_SRC emacs-lisp
-   (counsel-mode)
+  (counsel-mode)
 
    ;; (setq counsel-grep-base-command
    ;;     "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
 
-  (ivy-mode 1)
   ;; Ivy
   (setq ivy-use-virtual-buffers t
         enable-recursive-minibuffers t
         ivy-count-format "%d/%d "
         ivy-display-style 'fancy)
 
-   (global-set-key (kbd "s-s") 'counsel-grep-or-swiper)
-   (global-set-key (kbd "C-c j") 'counsel-git-grep)
-   (global-set-key (kbd "C-c C-r") 'ivy-resume)
+  (ivy-mode 1)
+
+  ;; Bind keys
+
    ;; (global-set-key (kbd "C-c j") 'counsel-git-grep)
    ;; (global-set-key (kbd "C-x l") 'counsel-locate)
 
+  (global-set-key (kbd "s-s") 'counsel-grep-or-swiper)
+  (global-set-key (kbd "C-c j") 'counsel-git-grep)
+  (global-set-key (kbd "C-c C-r") 'ivy-resume)
+
+  ;; Custom prefix key
+  (define-key my-super-z-map (kbd "f") 'swiper) ; fuzy search in files
+
+   ;; Ivy Rich
    (ivy-rich-mode 1)
    (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-   ;; Ivy Actions
 
+  ;; Ivy Actions
+
+  ;;; == Define actions
    (defun my-comment-line-action (_line)
      "Comment or uncomment currently selected LINE.
      This function is intended as a `swiper' action."
@@ -121,6 +131,7 @@ Custom prefix keys for things I use often
      This function is intended as a `swiper' action."
      (kill-whole-line 1))
 
+  ;;; == Add actions
    (ivy-add-actions
     'swiper
     '(;;(";" my-comment-line-action "comment line")
