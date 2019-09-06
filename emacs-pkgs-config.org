@@ -78,7 +78,9 @@ Custom prefix keys for things I use often
 
   ;; (define-key my-super-z-map (kbd "f") 'counsel-rg)	   ; find in current working directory
 
-  (define-key my-super-z-map (kbd "o") 'browse-url-at-point) ; open url
+  (define-key my-super-z-map (kbd "o") 'browse-url-at-point)
+  (define-key my-super-z-map (kbd "r") 'revert-buffer)
+  (define-key my-super-z-map (kbd "a") 'add-file-local-variable-prop-line)
 #+END_SRC
 
 * Find File In Project
