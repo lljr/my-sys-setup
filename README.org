@@ -1,0 +1,25 @@
+* About package(s) installation
+A Guile scheme manifest file defines packages to be installed.
+Guix, the package manager, does so by running the
+file at a terminal: =$ guix package -m my-guix-packages.scm=.
+
+It's probably best to run that command before opening =emacs-pkgs-config.org=
+or doing anything else.
+
+Not only will the command install all required Emacs packages, but Guix also takes care in
+defining their autoloads.
+
+Furthermore, many other system applications will be installed like GIMP, Inkscape, etc -- Emacs
+itself will install by running the command as well.
+
+* Getting started
+After cloning the repo open [[./emacs-pkgs-config.org][emacs package configuration]]
+and type =C-c C-v t= or =C-c C-v C-t= which calls =org-tangle=.
+
+The file to tangle has been defined in the file and will create a =init.el= file
+in =~/.emacs.d/= directory.
+
+* Configuring Emacs and Workflow
+Since all package configurations get written inside =emacs-pkgs-config.org=, the usual workflow
+is to add an edit to that same file inside its pertaining Org headline section
+and run =org-tangle= afterwards i.e. =C-c C-v t=.
