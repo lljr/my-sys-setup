@@ -16,7 +16,7 @@ itself will install by running the command as well.
 After cloning the repo open [[./emacs-pkgs-config.org][emacs package configuration]]
 and type =C-c C-v t= or =C-c C-v C-t= which calls =org-tangle=.
 
-The file to tangle has been defined in the file and will create a =init.el= file
+The file to tangle has been defined in the Org file and will create a =init.el= file
 in =~/.emacs.d/= directory.
 
 * Configuring Emacs and Workflow
