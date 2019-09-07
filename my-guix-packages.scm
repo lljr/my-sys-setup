@@ -22,7 +22,7 @@
    "openjdk"
    "guile"
    "recutils"
-   "wget"
+   "wget2"
    "imagemagick"
     "lout"       ; Lout
    "mit-scheme"  ; MIT Scheme
