@@ -303,7 +303,7 @@ Template system for Emacs
     (interactive)
     (if pyvenv-virtual-env
         (pyvenv-deactivate)
-     (pyvenv-activate "venv")))
+      (call-interactively 'pyvenv-activate)))
 
   (add-hook 'elpy-mode-hook (lambda () (define-key elpy-mode-map (kbd "C-c v") 'pyvenv-venv-dwim)))
 
