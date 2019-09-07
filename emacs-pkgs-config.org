@@ -34,6 +34,13 @@
 
   ;; Extra manuals
   (add-to-list 'Info-default-directory-list "~/Documents/Info")
+
+  ;; Desktop
+  (desktop-save-mode 1)
+  (push "~/Desktop" desktop-path)
+  (setq desktop-restore-frames nil)
+  (setq desktop-restore-eager 5) ; restore 5 buffers
+
 #+END_SRC
 * Changes to default Emacs UI
 #+BEGIN_SRC emacs-lisp
