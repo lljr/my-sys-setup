@@ -5,7 +5,7 @@
 # contributor: Jon Rostran
 # --
 
-// src: https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+/* src: https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
 html {
   box-sizing: border-box;
 }
