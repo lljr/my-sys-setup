@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Python class construct
+# key: class
+# group: oop
+# contributor: Jon Rostran
+# --
+
+class $1($2):
+    $0
+    pass
