@@ -90,11 +90,6 @@ Custom prefix keys for things I use often
   (define-key my-super-z-map (kbd "a") 'add-file-local-variable-prop-line)
 #+END_SRC
 
-* Find File In Project
-#+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-c f") 'find-file-in-project)
-
-#+END_SRC
 * Ivy
 #+BEGIN_SRC emacs-lisp
   (counsel-mode)
