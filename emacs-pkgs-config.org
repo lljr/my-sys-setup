@@ -211,7 +211,7 @@ manage several buffers interactively
   (counsel-projectile-mode)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (setq projectile-project-search-path '("~/Desktop/projs/")
-        projectile-completion-system 'ivy
+        projectile-completion-system 'ivy)
 
 #+end_src
 
