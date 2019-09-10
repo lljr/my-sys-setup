@@ -210,7 +210,9 @@ manage several buffers interactively
 #+begin_src emacs-lisp
   (counsel-projectile-mode)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (setq projectile-project-search-path '("~/Desktop/projs/"))
+  (setq projectile-project-search-path '("~/Desktop/projs/")
+        projectile-completion-system 'ivy
+
 #+end_src
 
 * Company
