@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: offscreen
+# key: off
+# --
+
+/* https://developer.paciellogroup.com/blog/2012/05/html5-accessibility-chops-hidden-and-aria-hidden/ */
+.offscreen {
+ clip-path: inset(100%);
+ clip: rect(1px 1px 1px 1px); /* IE 6/7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; /* added line */
+  width: 1px;
+}
