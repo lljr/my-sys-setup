@@ -198,6 +198,7 @@ manage several buffers interactively
   (define-key my/magit-prefix-key (kbd "s") 'magit-status)
   (define-key my/magit-prefix-key (kbd "d") 'magit-dispatch)
   (define-key my/magit-prefix-key (kbd "c") 'magit-clone)
+  (define-key my/magit-prefix-key (kbd "i") 'magit-init)
 
   (setq magit-completing-read-function 'ivy-completing-read)
 #+END_SRC
