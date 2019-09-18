@@ -24,6 +24,7 @@
    "recutils"
    "wget2"
    "imagemagick"
+   "mcron"
     "lout"       ; Lout
    "mit-scheme"  ; MIT Scheme
 
