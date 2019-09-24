@@ -60,6 +60,5 @@
    "emacs-npm-mode"
    "emacs-dired-du"
    "emacs-circe"
-   "emacs-projectile"
-   "emacs-counsel-projectile"
+   "emacs-dashboard"
    ))
