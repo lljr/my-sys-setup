@@ -202,15 +202,6 @@ manage several buffers interactively
 
   (setq magit-completing-read-function 'ivy-completing-read)
 #+END_SRC
-* Projectile
-#+begin_src emacs-lisp
-  (counsel-projectile-mode)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (setq projectile-project-search-path '("~/Desktop/projs/")
-        projectile-completion-system 'ivy)
-
-#+end_src
-
 * Company
 #+BEGIN_SRC emacs-lisp
   (add-hook 'after-init-hook 'global-company-mode)
