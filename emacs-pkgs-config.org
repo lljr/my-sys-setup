@@ -89,6 +89,10 @@ Custom prefix keys for things I use often
   (define-key my-super-z-map (kbd "r") 'revert-buffer)
   (define-key my-super-z-map (kbd "a") 'add-file-local-variable-prop-line)
 #+END_SRC
+* Dashboard
+#+begin_src emacs-lisp
+  (dashboard-setup-startup-hook)
+#+end_src
 
 * Ivy
 #+BEGIN_SRC emacs-lisp
