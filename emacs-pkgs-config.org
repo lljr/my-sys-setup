@@ -253,6 +253,10 @@ Template system for Emacs
 ** CSS
 #+BEGIN_SRC emacs-lisp
   (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+  ;; Remap css-lookup-symbol to fix global counsel-mode key rebindings
+  (add-hook 'css-mode-hook
+            (lambda () (define-key css-mode-map (kbd "C-h S") 'css-lookup-symbol)))
+
 #+END_SRC
 
 ** HTML
