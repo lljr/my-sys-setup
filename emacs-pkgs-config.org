@@ -276,7 +276,7 @@ Template system for Emacs
   (with-eval-after-load 'web-mode
     (setq	web-mode-engines-alist
 	  '(("handlebars"    . "\\.handlebars\\'")
-	    ("jinja" . "./templates/.*\\.html?\\'"))
+	    ("django" . "./templates/.*\\.html?\\'"))
 	  web-mode-content-types-alist
 	  '(("jsx" . "/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'")))
 
