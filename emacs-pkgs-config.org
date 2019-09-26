@@ -310,6 +310,19 @@ Template system for Emacs
 
   (add-hook 'elpy-mode-hook (lambda () (define-key elpy-mode-map (kbd "C-c v") 'pyvenv-venv-dwim)))
 
+  (defun elpy-django-command (cmd)
+    "Prompt user for Django command. If called with `C-u',
+  it will prompt for other flags/arguments to run."
+    (interactive (list (completing-read "Command: " (elpy-django--get-commands) nil nil)))
+    ;; Called with C-u, variable is set or is a cmd that requires an argument
+    (when (or current-prefix-arg
+              elpy-django-always-prompt
+              (member cmd elpy-django-commands-with-req-arg))
+      (setq cmd (concat cmd " " (read-shell-command (concat cmd ": ") "--noinput"))))
+    (if (string= cmd "shell")
+        (run-python (concat elpy-django-command " " cmd " -i python")
+                    t t)
+      (compile (concat elpy-django-command " " cmd))))
 #+END_SRC
 
 * Javascript
