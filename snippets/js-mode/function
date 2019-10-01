@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: JS function
-# key: defn
-# group: js
-# contributor: Jon Rostran
-# --
-function $1($2) {
-  $0
-}
