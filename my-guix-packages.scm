@@ -43,7 +43,6 @@
    "emacs-elpy"
    "emacs-emmet-mode"
    "emacs-web-mode"
-   "emacs-clojure-mode"
    "emacs-cider"
    "emacs-ivy"
    "emacs-company"
