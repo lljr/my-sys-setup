@@ -90,6 +90,13 @@ urlpatterns = [
 
 (define-abbrev-table 'js-mode-abbrev-table
   '(
+    ;; TODO add this as an abbrev
+;;     "clean": "rm -rf dist/*",
+;; "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers '&gt; 5%, ie 9' -r dist/css/*",
+;; "scss": "node-sass --indent-type space --linefeed lf --output-style compact -o dist/css/ src/scss",
+;; "html": "cp *.html dist/",
+;; "build:css": "npm run scss && npm run autoprefixer",
+;; "build:all": "npm run clean && (npm run build:css &) && npm run html"
 
     ))
 
