@@ -467,7 +467,7 @@ Nice to have packages and functionality
    (add-hook 'mhtml-mode-hook 'js-mode-add-electric-pairs) ; needs it for `script` tags
 
    ;; add extra pairs for web mode (jinja)
-   (defvar web-mode-jinja-electric-pairs '((?% . ?%)) "Electric pairs for web-mode.")
+   (defvar web-mode-jinja-electric-pairs '((?% . ?%) (?< . ?>)) "Electric pairs for web-mode.")
    (defun web-mode-add-jinja-electric-pairs ()
      (setq-local electric-pair-pairs (append electric-pair-pairs web-mode-jinja-electric-pairs)))
    (add-hook 'web-mode-hook 'web-mode-add-jinja-electric-pairs)
