@@ -50,7 +50,6 @@
    "emacs-markdown-mode"
    "emacs-pdf-tools"
    "emacs-iedit"
-   "emacs-yasnippet"
    "emacs-org"
    "emacs-ivy-rich"
    "emacs-htmlize"
