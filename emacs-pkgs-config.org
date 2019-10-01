@@ -533,6 +533,12 @@ Nice to have packages and functionality
           '(rainbow-delimiters-depth-8-face ((t (:foreground "magenta"))))
           '(rainbow-delimiters-depth-9-face ((t (:foreground "red")))))
  #+end_src
+** Abbrev Setup
+#+begin_src emacs-lisp
+  (setq my-abbreviations "ABBREVPATH")
+  (setenv my-abbreviations "~/my-sys-setup/my-abbrevs.el")
+  (load (getenv my-abbreviations))
+#+end_src
 
 * Elisp lessons
 #+begin_src emacs-lisp
