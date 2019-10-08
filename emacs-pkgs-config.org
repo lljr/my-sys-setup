@@ -262,6 +262,7 @@ Template system for Emacs
 ** HTML
 #+BEGIN_SRC emacs-lisp
   (add-hook 'html-mode-hook 'emmet-mode)
+  (add-hook 'html-mode-hook (lambda ()(setq emmet-indentation 2)))
 #+END_SRC
 
 ** Web Mode
