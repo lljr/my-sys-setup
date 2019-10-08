@@ -79,7 +79,7 @@ html {
 
 from . import views
 
-app_name =
+# app_name = \"\"
 urlpatterns = [
     path(),
 ]")
