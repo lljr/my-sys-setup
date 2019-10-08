@@ -81,7 +81,7 @@ from . import views
 
 # app_name = \"\"
 urlpatterns = [
-    path(),
+    path(\'\'), views.index, name=\"index\"
 ]")
     ))
 
