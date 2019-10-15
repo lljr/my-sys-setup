@@ -60,10 +60,7 @@
   (with-eval-after-load 'hl-line
     (set-face-background 'hl-line "#f0f5ff"))
 
-  ;; Add some minor color theme
-  (set-face-attribute 'default nil :background "floral white")
-  (set-face-attribute 'font-lock-comment-face nil :foreground "DarkSeaGreen4")
-  (set-face-background 'region "LightSteelBlue")
+  (load-theme 'tsdh-light t)
 #+END_SRC
 * Custom Prefix Keys
 Custom prefix keys for things I use often
