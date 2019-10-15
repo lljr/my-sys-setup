@@ -244,9 +244,8 @@ Template system for Emacs
 #+BEGIN_SRC emacs-lisp
   (with-eval-after-load 'emmet-mode
     (setq emmet-move-cursor-between-quotes t      ;  cursor to be positioned between first empty quotes after expanding
-	  emmet-self-closing-tag-style " /"))
+          emmet-self-closing-tag-style " /"))
 #+END_SRC
-
 ** CSS
 #+BEGIN_SRC emacs-lisp
   (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
