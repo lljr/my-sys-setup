@@ -293,7 +293,7 @@ Template system for Emacs
 
 * Python
 #+BEGIN_SRC emacs-lisp
-  (setq python-shell-interpreter "python3"
+  (setq-default python-shell-interpreter "python3"
     python-indent-offset 4)
 
   (elpy-enable)
