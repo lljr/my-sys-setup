@@ -50,15 +50,14 @@
 
   (display-time-mode 1) ; display time in modeline
 
-  (setq ns-pop-up-frames nil       ; open files in an exising frame
+  (setq-default ns-pop-up-frames nil       ; open files in an exising frame
     )
 
   (blink-cursor-mode 0)			; stop cursor blinking
   (global-hl-line-mode +1)		; highlight current active line
 
   ;; Change default hl-line face
-  (with-eval-after-load 'hl-line
-    (set-face-background 'hl-line "#f0f5ff"))
+  (set-face-background 'hl-line "#f0f5ff")
 
   (load-theme 'tsdh-light t)
 #+END_SRC
