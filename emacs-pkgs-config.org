@@ -219,23 +219,6 @@ manage several buffers interactively
         company-tooltip-align-annotations t
         company-minimum-prefix-length 2))
 #+END_SRC
-* Yasnippet
-Template system for Emacs
-#+BEGIN_SRC emacs-lisp
-  (setq yas-snippet-dirs '("~/my-sys-setup/snippets"))
-
-  ;; Activate in these as minor mode
-  (add-hook 'prog-mode-hook #'yas-minor-mode)
-  (add-hook 'python-mode-hook #'yas-minor-mode)
-  (add-hook 'js-mode-hook #'yas-minor-mode)
-  (add-hook 'web-mode-hook #'yas-minor-mode)
-  (add-hook 'lisp-mode-hook #'yas-minor-mode)
-  (add-hook 'org-mode-hook #'yas-minor-mode)
-  (add-hook 'clojure-mode-hook #'yas-minor-mode)
-  (add-hook 'emacs-lisp-mode-hook #'yas-minor-mode)
-  (add-hook 'css-mode-hook #'yas-minor-mode)
-  (add-hook 'sh-mode-hook #'yas-minor-mode)
-#+END_SRC
 * Web Development
 
 ** Emmet
