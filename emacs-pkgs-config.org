@@ -274,10 +274,8 @@ manage several buffers interactively
 
 * Python
 #+BEGIN_SRC emacs-lisp
-  (setq-default python-shell-interpreter "python3"
-    python-indent-offset 4)
-
   (elpy-enable)
+  (defalias 'workon 'pyvenv-workon)
 
   (defun pyvenv-venv-dwim ()
     "Ask to activate a virtual environment or deactivate one if active."
