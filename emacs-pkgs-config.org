@@ -571,3 +571,39 @@ Nice to have packages and functionality
 
 ** On Ubuntu
    For Flask/Postgres Python needs =Psycopg2= so you need to run [[https://stackoverflow.com/a/41852419][these]] in Terminal before
+
+** Debian Buster
+
+*** Setting up a Python Environment
+   first [[https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-debian-10][setup debian]]
+
+   basically you'll need:
+   1. python3-pip
+   2. build-essential libssl-dev libffi-dev python3-dev
+
+   then you can:
+   ~pip3 install --user virtualenvwrapper jedi rope black yapf autopep8 flake8~
+
+**** Required Environment Vars
+     #+begin_example
+       export PATH=$HOME/.local/bin:$PATH
+
+       export WORKON_HOME=$HOME/.virtualenvs
+       export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+       export PROJECT_HOME=$HOME/Documents/Devel
+       export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
+       source $HOME/.local/bin/virtualenvwrapper_lazy.sh
+     #+end_example
+
+**** Linking development packages to Emacs Elpy
+     After running ~pip3 install --user virtualenvwrapper jedi rope
+     black yapf autopep8 flake8~
+
+     1. Create a virtual environment with ~mkvirtualenv~
+     2. Use virtualenvwrapper's ~add2virtualenv
+        $HOME/.local/lib/python3.7/site-packages~
+
+     After running ~mkvirtualenv ...~ it will switch to the new environment
+     automatically so step 1 and 2 can be done in sequence
+
+     *You'll need to add the .local/lib/python3.7/site-packages for every newly created environment to use Elpy's autocompletion etc in Emacs*
