@@ -274,26 +274,26 @@ manage several buffers interactively
 
 * Python
 #+BEGIN_SRC emacs-lisp
-    (elpy-enable)
-   (defalias 'workon 'pyvenv-workon)
+  (elpy-enable)
+  (defalias 'workon 'pyvenv-workon)
 
   (setq python-shell-interpreter "python3"
         elpy-rpc-python-command "python3"
         python-shell-interpreter-args "-i")
 
-    (defun elpy-django-command (cmd)
-      "Prompt user for Django command. If called with `C-u',
-    it will prompt for other flags/arguments to run."
-      (interactive (list (completing-read "Command: " (elpy-django--get-commands) nil nil)))
-      ;; Called with C-u, variable is set or is a cmd that requires an argument
-      (when (or current-prefix-arg
-                elpy-django-always-prompt
-                (member cmd elpy-django-commands-with-req-arg))
-        (setq cmd (concat cmd " " (read-shell-command (concat cmd ": ") "--noinput"))))
-      (if (string= cmd "shell")
-          (run-python (concat elpy-django-command " " cmd " -i python")
-                      t t)
-        (compile (concat elpy-django-command " " cmd))))
+  (defun elpy-django-command (cmd)
+    "Prompt user for Django command. If called with `C-u',
+      it will prompt for other flags/arguments to run."
+    (interactive (list (completing-read "Command: " (elpy-django--get-commands) nil nil)))
+    ;; Called with C-u, variable is set or is a cmd that requires an argument
+    (when (or current-prefix-arg
+              elpy-django-always-prompt
+              (member cmd elpy-django-commands-with-req-arg))
+      (setq cmd (concat cmd " " (read-shell-command (concat cmd ": ") "--noinput"))))
+    (if (string= cmd "shell")
+        (run-python (concat elpy-django-command " " cmd " -i python")
+                    t t)
+      (compile (concat elpy-django-command " " cmd))))
 #+END_SRC
 
 * Javascript
