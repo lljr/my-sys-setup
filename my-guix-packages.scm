@@ -57,4 +57,5 @@
    "emacs-dired-du"
    "emacs-circe"
    "emacs-dashboard"
+   "emacs-multiple-cursors"
    ))
