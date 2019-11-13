@@ -579,8 +579,7 @@ Nice to have packages and functionality
 ** On Ubuntu
    For Flask/Postgres Python needs =Psycopg2= so you need to run [[https://stackoverflow.com/a/41852419][these]] in Terminal before
 
-** Debian Buster
-
+** Debian Buster/Ubuntu
 *** Setting up a Python Environment
    first [[https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-debian-10][setup debian]]
 
