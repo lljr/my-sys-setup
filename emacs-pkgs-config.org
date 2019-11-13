@@ -591,17 +591,6 @@ Nice to have packages and functionality
    then you can:
    ~pip3 install --user virtualenvwrapper jedi rope black yapf autopep8 flake8~
 
-**** Required Environment Vars
-     #+begin_example
-       export PATH=$HOME/.local/bin:$PATH
-
-       export WORKON_HOME=$HOME/.virtualenvs
-       export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-       export PROJECT_HOME=$HOME/Documents/Devel
-       export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
-       source $HOME/.local/bin/virtualenvwrapper_lazy.sh
-     #+end_example
-
 **** Linking development packages to Emacs Elpy
      After running ~pip3 install --user virtualenvwrapper jedi rope
      black yapf autopep8 flake8~
@@ -615,19 +604,11 @@ Nice to have packages and functionality
 
      *You'll need to add the .local/lib/python3.7/site-packages for every newly created environment to use Elpy's autocompletion etc in Emacs*
 
-** Virtualenvwrapper vars
-#+begin_src shell
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export PROJECT_HOME=$HOME/Documents/Devel
-export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
-source $HOME/.local/bin/virtualenvwrapper_lazy.sh
-#+end_src
-
-** Guix vars
-#+begin_src shell
-export SSL_CERT_DIR="$HOME/.guix-profile/etc/ssl/certs"
-export SSL_CERT_FILE="$HOME/.guix-profile/etc/ssl/certs/ca-certificates.crt"
-export GIT_SSL_CAINFO="$SSL_CERT_FILE"
-export INFOPATH="$HOME/.config/guix/current/share/info:$INFOPATH"
-#+end_src
+**** Virtualenvwrapper vars
+  #+begin_src shell
+  export WORKON_HOME=$HOME/.virtualenvs
+  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+  export PROJECT_HOME=$HOME/Documents/Devel
+  export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
+  source $HOME/.local/bin/virtualenvwrapper_lazy.sh
+  #+end_src
