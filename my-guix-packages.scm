@@ -1,6 +1,5 @@
 (specifications->manifest
  '("glibc-locales"
-   "glibc-utf8-locales"
 
    ;; Fonts
    "gs-fonts" "font-dejavu" "font-gnu-freefont-ttf"
