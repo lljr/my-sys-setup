@@ -25,7 +25,7 @@
    "wget2"
    "imagemagick"
    "mcron"
-    "lout"       ; Lout
+   "lout"       ; Lout
    "mit-scheme"  ; MIT Scheme
 
    ;; Guile
