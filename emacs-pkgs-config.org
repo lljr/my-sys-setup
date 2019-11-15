@@ -204,14 +204,6 @@ manage several buffers interactively
 * Company
 #+BEGIN_SRC emacs-lisp
   (add-hook 'after-init-hook 'global-company-mode)
-
-  ;; With this code, yasnippet will expand the snippet if company didn't complete the word
-  ;; replace company-complete-common with company-complete if you're using it
-  ;; https://gist.github.com/sebastiencs/a16ea58b2d23e2ea52f62fcce70f4073
-  (advice-add 'company-complete :before (lambda () (setq my-company-point (point))))
-  (advice-add 'company-complete :after (lambda ()
-                       (when (equal my-company-point (point))
-                         (yas-expand))))
   (with-eval-after-load 'company
       (setq company-echo-delay 0   ; disable the delay
         company-idle-delay 0
