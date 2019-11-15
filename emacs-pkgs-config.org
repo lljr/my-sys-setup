@@ -237,7 +237,7 @@ manage several buffers interactively
 ** Web Mode
 #+BEGIN_SRC emacs-lisp
   (add-hook 'web-mode-hook 'emmet-mode)
-  (add-hook 'web-mode-hook (lambda () (setq emmet-expand-jsx-className? t)))   	; expand 'className="..."' instead of 'class="..."'
+
 
   (add-to-list 'auto-mode-alist '("/templates/.*\\.html?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'" . web-mode))
