@@ -1,16 +1,22 @@
 (specifications->manifest
- '("glibc-locales"
+ '(; --On Foreign Distro
+   "glibc-locales"
+                                        ;
 
    ;; Fonts
    "gs-fonts" "font-dejavu" "font-gnu-freefont-ttf"
 
    ;; Certs
    "nss-certs"
+   ; --
+
 
    ;; Apps
    "emacs"
    "gimp"
    "inkscape"
+   "qbittorrent"
+
 
    ;; Programs/Tools
    "git"
@@ -21,8 +27,8 @@
    "wget2"
    "imagemagick"
    "mcron"
-   "lout"       ; Lout
-   "mit-scheme"  ; MIT Scheme
+   "lout"
+
 
    ;; Guile
    "artanis"
@@ -30,28 +36,30 @@
    "guile-reader" "guile-lib"
    "skribilo"
 
+
    ;; Emacs Packages
    "emacs-guix"
-   "emacs-aggressive-indent"
    "emacs-geiser"
    "emacs-magit"
+   "emacs-ivy" "emacs-ivy-rich"
+   "emacs-company"
+   "emacs-org"
+   "emacs-dashboard"
+
    "emacs-js2-mode"
    "emacs-elpy"
    "emacs-emmet-mode"
    "emacs-web-mode"
-   "emacs-ivy"
-   "emacs-company"
-   "emacs-markdown-mode"
+
+   "emacs-circe"
    "emacs-pdf-tools"
+
+   "emacs-markdown-mode"
    "emacs-iedit"
-   "emacs-org"
-   "emacs-ivy-rich"
    "emacs-htmlize"
    "emacs-org-reveal"
    "emacs-rainbow-delimiters"
    "emacs-npm-mode"
    "emacs-dired-du"
-   "emacs-circe"
-   "emacs-dashboard"
    "emacs-multiple-cursors"
    ))
