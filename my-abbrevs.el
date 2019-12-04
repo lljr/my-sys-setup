@@ -7,35 +7,12 @@
     ("afaik" "as far as i know" )
     ("atm" "at the moment" )
     ("ty" "thank you" )
-    ("ur" "you are" )
-    ("btw" "by the way" )
-
     ;; english word abbrev
     ("arg" "argument" )
-    ("bc" "because" )
-    ("bg" "background" )
-    ("math" "mathematics" )
-
-    ;; computing
-    ("cs" "computer science" )
-
-    ;; tech company
-    ("macos" "Mac OS" )
-
-    ;; programing
-    ("ipa" "IP address" )
-    ("jvm" "Java Virtual Machine" )
-    ("subdir" "sub-directory" )
-
-    ("db" "database" )
-
-    ;; programing
-    ("eq" "==" )
 
     ;; unicode
     ("hr" "--------------------------------------------------" )
     ;;
-
     ))
 
 ;; define abbrev for specific major mode
