@@ -17,6 +17,8 @@
    "inkscape"
    "qbittorrent"
 
+   ;; Manuals
+   "sicp"
 
    ;; Programs/Tools
    "git"
