@@ -16,9 +16,14 @@
    "gimp"
    "inkscape"
    "qbittorrent"
+   "blender"
+   "vlc"
+
+   "imagemagick"
 
    ;; Manuals
    "sicp"
+
 
    ;; Programs/Tools
    "git"
@@ -27,7 +32,6 @@
    "guile"
    "recutils"
    "wget2"
-   "imagemagick"
    "mcron"
    "lout"
 
