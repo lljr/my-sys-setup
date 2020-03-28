@@ -217,6 +217,7 @@ manage several buffers interactively
 #+BEGIN_SRC emacs-lisp
   (with-eval-after-load 'emmet-mode
     (setq emmet-move-cursor-between-quotes t      ;  cursor to be positioned between first empty quotes after expanding
+          emmet-expand-jsx-className? nil
           emmet-self-closing-tag-style " /"))
 #+END_SRC
 ** CSS
