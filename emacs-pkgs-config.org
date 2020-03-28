@@ -238,7 +238,6 @@ manage several buffers interactively
 #+BEGIN_SRC emacs-lisp
   (add-hook 'web-mode-hook 'emmet-mode)
 
-
   (add-to-list 'auto-mode-alist '("/templates/.*\\.html?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("/\\(components\\|containers\\|src\\)/.*\\.js[x]?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.\\(handlebars\\|hbs\\)\\'" . web-mode))
@@ -572,7 +571,7 @@ Nice to have packages and functionality
    For Flask/Postgres Python needs =Psycopg2= so you need to run [[https://stackoverflow.com/a/41852419][these]] in Terminal before
 
 ** Debian Buster/Ubuntu
-*** Setting up a Python Environment
+*** Setting up Python
    first [[https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-debian-10][setup debian]]
 
    basically you'll need:
@@ -582,23 +581,10 @@ Nice to have packages and functionality
    then you can:
    ~pip3 install --user virtualenvwrapper jedi rope black yapf autopep8 flake8~
 
-**** Linking development packages to Emacs Elpy
-     After running ~pip3 install --user virtualenvwrapper jedi rope
+**** Install required dev packages for Emacs elpy
+     Run ~pip3 install --user virtualenvwrapper jedi rope
      black yapf autopep8 flake8~
 
-     1. Create a virtual environment with ~mkvirtualenv~
-     2. Use virtualenvwrapper's ~add2virtualenv
-        $HOME/.local/lib/python3.7/site-packages~
-
-     After running ~mkvirtualenv ...~ it will switch to the new environment
-     automatically so step 1 and 2 can be done in sequence
-
-     *You'll need to add the .local/lib/python3.7/site-packages for every newly created environment to use Elpy's autocompletion etc in Emacs*
-
-***** Special note
-      in development version of Elpy this autocompletion packages get
-      set up automatically in ~.emacs.d/~, so this workaround may not
-      be needed in the future
 **** Virtualenvwrapper vars
    #+begin_src shell
    export WORKON_HOME=$HOME/.virtualenvs
@@ -607,7 +593,6 @@ Nice to have packages and functionality
    export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
    source $HOME/.local/bin/virtualenvwrapper_lazy.sh
    #+end_src
-
 
 ** Setting up Guix on Ubuntu
 *** could not install guile locale warning
