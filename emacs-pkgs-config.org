@@ -272,6 +272,9 @@ manage several buffers interactively
 #+begin_src emacs-lisp
   (setq geiser-mode-auto-p nil) ; don't automatically load geiser in scheme buffers
 
+  (with-eval-after-load 'geiser-guile
+    (add-to-list 'geiser-guile-load-path "~/src/guix"))
+
 
   ;; Set up for Skribilo files
   (add-to-list 'auto-mode-alist '("\\.skr\\'" . scheme-mode))
