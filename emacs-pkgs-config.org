@@ -298,6 +298,22 @@ manage several buffers interactively
     (c-set-offset 'brace-list-open '+)   ; all "opens" should be indented by the c-indent-level
     (c-set-offset 'case-label '+))       ; indent case labels by c-indent-level, too
   (add-hook 'c-mode-hook 'my-c-mode-hook)
+
+  ;; GGTAGS
+  (add-hook 'c-mode-common-hook
+            (lambda ()
+              ;; activated for other languages as well
+              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode 'js-mode)
+                (ggtags-mode 1))))
+
+  (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
+  (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
+  (define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
+  (define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
+  (define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
+  (define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
+
+  (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
 #+END_SRC
 
 * Org
