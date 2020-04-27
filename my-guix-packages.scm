@@ -34,6 +34,7 @@
    "wget2"
    "mcron"
    "lout"
+   "global"
 
 
    ;; Guile
@@ -56,6 +57,7 @@
    "emacs-elpy"
    "emacs-emmet-mode"
    "emacs-web-mode"
+   "emacs-ggtags"
 
    "emacs-circe"
    "emacs-pdf-tools"
