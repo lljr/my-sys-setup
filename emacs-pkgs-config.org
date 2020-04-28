@@ -374,7 +374,7 @@ Client for IRC
 #+end_src
 * Extras
 Nice to have packages and functionality
-**  Already in Emacs
+** Already in Emacs
 *** Misc
  #+begin_src emacs-lisp
    (show-paren-mode t) ; toggle highlighting matching paren
