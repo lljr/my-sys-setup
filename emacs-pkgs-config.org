@@ -576,6 +576,14 @@ Nice to have packages and functionality
      black yapf autopep8 flake8~
 
 **** Virtualenvwrapper vars
+     NOTE: When updating Ubuntu (which does not happen often)
+     a new Python version will be installed, therefore, it's good to run
+     ~python3 -m pip install virtualenvwrapper --upgrade~ or w/o the ~--upgrade~
+     switch to reinstall the package
+
+     NOTE 2: Maybe this setup won't be needed in the future as I will be moving
+     most of my workflow within Guix with it's profile and environment tools
+
    #+begin_src shell
    export WORKON_HOME=$HOME/.virtualenvs
    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
