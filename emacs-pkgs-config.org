@@ -179,6 +179,12 @@ manage several buffers interactively
         company-tooltip-limit 10
         company-tooltip-align-annotations t
         company-minimum-prefix-length 2))
+
+  ;; Company quickhelp adds a pop-up description for the function
+  ;; completion candidate
+  (company-quickhelp-mode)
+  (eval-after-load 'company
+    '(define-key company-active-map (kbd "C-c h") #'company-quickhelp-manual-begin))
 #+END_SRC
 * Web Development
 
