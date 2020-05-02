@@ -39,7 +39,6 @@
 * Changes to default Emacs UI
 #+BEGIN_SRC emacs-lisp
   (tool-bar-mode -1)			; remove toolbar
-  (menu-bar-mode -1)			; delete menu bar
   (scroll-bar-mode -1) 			; remove scroll bar
 
   ;; Prompts that require 'yes' or 'no' accept 'y' or 'n'
