@@ -50,6 +50,7 @@
    "emacs-magit"
    "emacs-ivy" "emacs-ivy-rich"
    "emacs-company"
+   "emacs-companyquickhelp"
    "emacs-org"
    "emacs-dashboard"
 
