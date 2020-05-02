@@ -183,8 +183,7 @@ manage several buffers interactively
   ;; Company quickhelp adds a pop-up description for the function
   ;; completion candidate
   (company-quickhelp-mode)
-  (eval-after-load 'company
-    '(define-key company-active-map (kbd "C-c h") #'company-quickhelp-manual-begin))
+  (setq company-quickhelp-delay 3)r
 #+END_SRC
 * Web Development
 
