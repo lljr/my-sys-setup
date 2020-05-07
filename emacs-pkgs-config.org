@@ -285,30 +285,27 @@ manage several buffers interactively
 
 * GGtags
 #+begin_src emacs-lisp
-  (add-hook 'c-mode-common-hook
-            (lambda ()
-              ;; activated for other languages as well
-              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode 'js-mode)
-                (ggtags-mode 1))))
+  ;; (add-hook 'c-mode-common-hook
+  ;;           (lambda ()
+  ;;             ;; activated for other languages as well
+  ;;             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode 'js-mode)
+  ;;               (ggtags-mode 1))))
 
-  (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
-  (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
-  (define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
-  (define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
-  (define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
-  (define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
+  ;; (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
+  ;; (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
+  ;; (define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
+  ;; (define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
+  ;; (define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
+  ;; (define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
 
-  (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
+  ;; (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
 #+end_src
 * C
 [[https://www.emacswiki.org/emacs/AaronL][Copy paste from here]]
 #+BEGIN_SRC emacs-lisp
-  (setq-default c-indent-tabs-mode t     ; Pressing TAB should cause indentation
-          c-indent-level 4       ; A TAB is equivilent to four spaces
-          c-argdecl-indent 0     ; Do not indent argument decl's extra
-          c-tab-always-indent t
-          backward-delete-function nil) ; DO NOT expand tabs when deleting
-  (c-add-style "my-c-style" '((c-continued-statement-offset 4))) ; If a statement continues on the next line, indent the continuation by 4
+   ;; use the GNU style for C files, spaces instead of tabs, highlight bad spaces
+  (setq c-mode-common-hook '(lambda () (c-set-style "gnu")
+                              (setq show-trailing-whitespace t)))
   (defun my-c-mode-hook ()
     (c-set-style "my-c-style")
     (c-set-offset 'substatement-open '0) ; brackets should be at same indentation level as the statements they open
