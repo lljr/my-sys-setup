@@ -182,7 +182,7 @@ manage several buffers interactively
   ;; Company quickhelp adds a pop-up description for the function
   ;; completion candidate
   (company-quickhelp-mode)
-  (setq company-quickhelp-delay 3)r
+  (setq company-quickhelp-delay 3)
 #+END_SRC
 * Web Development
 
