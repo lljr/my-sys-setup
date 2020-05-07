@@ -8,7 +8,6 @@
    window-combination-resize t            ; Resize windows proportionally
    display-time-default-load-average nil  ; don't show system load time in modeline
    indent-tabs-mode nil                   ; stop using tabs to indent
-   indent-tabs-mode nil 			        ; use spaces not tab
    tab-width 4 				            ; change default tab width
    )
 
