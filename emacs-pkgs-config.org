@@ -379,7 +379,10 @@ Nice to have packages and functionality
  #+begin_src emacs-lisp
    (show-paren-mode t) ; toggle highlighting matching paren
 
-   (electric-layout-mode 1)  ; adds electricity after inserting chars e.g. in  js ';' starts new line
+   ;; Electric Layout Mode
+   ;; Adds newline after the insertion of certain characters
+   (add-hook 'css-mode 'electric-layout-mode)
+
 
    (electric-indent-mode +1) ; toggle on the fly re-indentation
 
