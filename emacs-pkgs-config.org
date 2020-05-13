@@ -430,30 +430,31 @@ Nice to have packages and functionality
     (global-prettify-symbols-mode t)
 
     (defun my-add-pretty-lambda ()
-        "Make some word or string show as pretty Unicode symbols"
-        (push '("lambda" . 955) prettify-symbols-alist)	      ; λ
-        (push '("->" . 8594) prettify-symbols-alist)              ; →
-        (push '("=>" . 8658) prettify-symbols-alist)              ; ⇒
-        (push '("map" . 8614) prettify-symbols-alist) 	      ; ↦
-	        )
+      "Make some word or string show as pretty Unicode symbols"
+      (push '("lambda" . 955) prettify-symbols-alist)	      ; λ
+      (push '("->" . 8594) prettify-symbols-alist)              ; →
+      (push '("=>" . 8658) prettify-symbols-alist)              ; ⇒
+      (push '("map" . 8614) prettify-symbols-alist) 	      ; ↦
+      )
 
     (add-hook 'tex-mode-hook 'my-add-pretty-lambda)
 
-    (add-hook 'js-mode-hook (lambda ()
-			      "Beautify Javascript Keywords"
-			      (my-add-pretty-lambda)))
-
     (add-hook 'org-mode-hook (lambda ()
-			       "Beautify Org Checkbox Symbol"
-			       (push '("[ ]" .  "▢") prettify-symbols-alist)
-			       (push '("*" .  "◉") prettify-symbols-alist)
-			       (push '("[X]" . "☑" ) prettify-symbols-alist)
-			       (push '("[-]" . "❍" ) prettify-symbols-alist)))
+                               "Beautify Org Checkbox Symbol"
+                               (push '("[ ]" .  "▢") prettify-symbols-alist)
+                               (push '("*" .  "◉") prettify-symbols-alist)
+                               (push '("[X]" . "☑" ) prettify-symbols-alist)
+                               (push '("[-]" . "❍" ) prettify-symbols-alist)))
 
     (add-hook 'emacs-lisp-mode-hook
-	      (lambda ()
-	        "Beautify Emacs Symbols"
-	        (push '("<=" . "≤") prettify-symbols-alist)))
+              (lambda ()
+                "Beautify Emacs Symbols"
+                (push '("<=" . "≤") prettify-symbols-alist)))
+
+    (add-hook 'scheme-mode-hook
+              (lambda ()
+                "Beautify Emacs Symbols"
+                (push '("<=" . "≤") prettify-symbols-alist)))
   #+END_SRC
 ** Not included in Emacs by default
 *** Iedit
