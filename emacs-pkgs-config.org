@@ -405,7 +405,7 @@ Nice to have packages and functionality
    (add-hook 'lisp-interaction-mode-hook 'electric-pair-local-mode)
    (add-hook 'web-mode-hook 'electric-pair-local-mode)
    (add-hook 'ielm-mode-hook 'electric-pair-local-mode)
-   (add-hook 'js-mode-hook 'electric-pair-local-mode)
+   (add-hook 'js2-mode-hook 'electric-pair-local-mode)
    (add-hook 'org-mode-hook 'electric-pair-local-mode)
    (add-hook 'scheme-mode-hook 'electric-pair-local-mode)
    (add-hook 'python-mode-hook 'electric-pair-local-mode)
