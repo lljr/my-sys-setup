@@ -71,4 +71,6 @@
    "emacs-npm-mode"
    "emacs-dired-du"
    "emacs-multiple-cursors"
+
+   "emacs-tldr"
    ))
