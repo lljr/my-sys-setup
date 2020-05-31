@@ -511,8 +511,52 @@ Nice to have packages and functionality
 
 * Elisp lessons
 #+begin_src emacs-lisp
-  ;; From Emacs Lisp Intro
-  ;;; =========================== ============== ============ =========== =====
+  ;; Writing Functions in Elisp
+  ;; 3.12 Exercises
+  ;; ==============
+  ;;   • Write a non-interactive function that doubles the value of its
+  ;;     argument, a number.  Make that function interactive.
+  (defun double-value (number)
+    "Non-interactive version"
+    (* 2 number))
+
+  (double-value 4)
+
+  (defun double-value-interactive (number)
+    "Interactive version of doubling a value"
+    (interactive "p")
+    (message (number-to-string (* number 2))))
+
+  ;;   • Write a function that tests whether the current value of
+  ;;     ‘fill-column’ is greater than the argument passed to the function,
+  ;;     and if so, prints an appropriate message.
+  (defun is-num-greater-than-curr-fill-column (number)
+    "Returns a message indicating whether the current value of `fill-column' is greater than NUMBER."
+    (if (> fill-column number)
+        (message "fill-column is greater than %d." number)
+      (message "%d is greater than fill-column" number)))
+  ;; ==============
+  ;; 4.6 Exercises
+  ;; =============
+  ;;   • Write your own ‘simplified-end-of-buffer’ function definition; then
+  ;;     test it to see whether it works.
+  (defun simplified-end-of-buffer ()
+    "Go to end of buffer."
+    (interactive)
+    (push-mark)
+    (goto-char (point-max)))
+
+  ;;   • Use ‘if’ and ‘get-buffer’ to write a function that prints a message
+  ;;     telling you whether a buffer exists.
+
+  (defun does-buffer-exist? (buffer)
+    "Echoes whether or not BUFFER or BUFFER-NAME exists."
+    (if (get-buffer buffer)
+        (message "It exists.")
+      (message "It does not exist.")))
+
+
+  ;; done interactively
   ;; (defun my/check-buffer-exists (name)
   ;;   "Send a message to echo area if buffer NAME exists."
   ;;   (interactive "sBuffer name: ")
