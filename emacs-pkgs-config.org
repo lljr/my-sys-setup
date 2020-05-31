@@ -520,38 +520,16 @@ Nice to have packages and functionality
   ;;       (message "The buffer %s exists" name)
   ;;     (message "Sorry, the buffer, %s, does not exist." name)))
 
-  ;; ============================Elisp Confusion===============================
-  ;; (defun my-first-optional-arg (&optional number)
-  ;;   "Sends a message if `fill-column' is greater than or less than NUMBER."
-  ;;   (interactive "P")
-  ;;   (or number (setq number 56))
-  ;;   (if (>= number fill-column)
-  ;;       (message "%d is greater than or equal to %d" number fill-column)
-  ;;     (message "%d is less than %d" number fill-column)))
+  ;; Write an interactive function with an optional argument that tests
+  ;; whether its argument, a number, is greater than or equal to, or else,
+  ;; less than the value of ‘fill-column’, and tells you which, in a message.
+  ;; However, if you do not pass an argument to the function, use 56 as a
+  ;; default value.
 
-  ;; (defun my-second-optional-arg (&optional number)
-  ;;   "Sends a message if `fill-column' is greater than or less than NUMBER."
-  ;;   (interactive "p")
-  ;;   (or number (setq number 56))
-  ;;   (if (>= number fill-column)
-  ;;       (message "%d is greater than or equal to %d" number fill-column)
-  ;;     (message "%d is less than %d" number fill-column)))
-
-  ;; (defun my-third-optional-arg (&optional number)
-  ;;   "Sends a message if `fill-column' is greater than or less than NUMBER."
-  ;;   (interactive "P")
-  ;;   (or number (setq (prefix-numeric-value number) 56))
-  ;;   (if (>= number fill-column)
-  ;;       (message "%d is greater than or equal to %d" number fill-column)
-  ;;     (message "%d is less than %d" number fill-column)))
-
-  ;; (defun my-fourth-optional-arg (&optional number)
-  ;;   "Sends a message if `fill-column' is greater than or less than NUMBER."
-  ;;   (interactive "p")
-  ;;   (or number (setq (prefix-numeric-value number) 56))
-  ;;   (if (>= number fill-column)
-  ;;       (message "%d is greater than or equal to %d" number fill-column)
-  ;;     (message "%d is less than %d" number fill-column)))
+  (defun is-argument-greater-than-or-else (&optional number)
+    (if (<= fill-column (or number (setq number 56)))
+        (message "argument %d is greater than or equal to fill-column" number)
+      (message "argument %d is less than fill-column" number)))
 #+end_src
 * Notes
 ** Using Emacs as a Database Client
