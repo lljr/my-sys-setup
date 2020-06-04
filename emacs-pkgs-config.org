@@ -285,9 +285,6 @@ manage several buffers interactively
 #+begin_src emacs-lisp
   (setq cider-font-lock-dynamically '(macro core function var))
   (setq cider-eval-result-prefix ";; => ")
-
-
-
 #+end_src
 
 * Scheme
@@ -397,12 +394,12 @@ Nice to have packages and functionality
 ** Already in Emacs
 *** Misc
  #+begin_src emacs-lisp
-   (show-paren-mode t) ; toggle highlighting matching paren
+   ;; Highlight matching parenthesis
+   (show-paren-mode t)
 
    ;; Electric Layout Mode
-   ;; Adds newline after the insertion of certain characters
-   (add-hook 'css-mode 'electric-layout-mode)
 
+   (add-hook 'css-mode 'electric-layout-mode)    ; insert newline after the insertion of '{'
 
    (electric-indent-mode +1) ; toggle on the fly re-indentation
 
@@ -413,21 +410,20 @@ Nice to have packages and functionality
    (add-hook 'lisp-interaction-mode-hook 'electric-pair-local-mode)
    (add-hook 'web-mode-hook 'electric-pair-local-mode)
    (add-hook 'ielm-mode-hook 'electric-pair-local-mode)
-   (add-hook 'js2-mode-hook 'electric-pair-local-mode)
+   (add-hook 'js-mode-hook 'electric-pair-local-mode)
    (add-hook 'org-mode-hook 'electric-pair-local-mode)
    (add-hook 'scheme-mode-hook 'electric-pair-local-mode)
    (add-hook 'python-mode-hook 'electric-pair-local-mode)
    (add-hook 'css-mode-hook 'electric-pair-local-mode)
-   (add-hook 'less-css-mode-hook 'electric-pair-local-mode)
 
-   ;; add extra pairs for org mode
+   ;; Add extra pairs for org mode
    (defvar org-electric-pairs '((?/ . ?/) (?= . ?=)) "Electric pairs for org-mode.")
    (defun org-add-electric-pairs ()
      (setq-local electric-pair-pairs (append electric-pair-pairs org-electric-pairs))
      (setq-local electric-pair-text-pairs electric-pair-pairs))
    (add-hook 'org-mode-hook 'org-add-electric-pairs)
 
-   ;; add extra pairs for js-mode
+   ;; Add extra pairs for js-mode
    (defvar js-mode-electric-pairs '((?` . ?`)) "Electric pairs for js-mode.")
    (defun js-mode-add-electric-pairs ()
      (setq-local electric-pair-pairs (append electric-pair-pairs js-mode-electric-pairs))
@@ -435,17 +431,17 @@ Nice to have packages and functionality
    (add-hook 'js-mode-hook 'js-mode-add-electric-pairs)
    (add-hook 'mhtml-mode-hook 'js-mode-add-electric-pairs) ; needs it for `script` tags
 
-   ;; add extra pairs for web mode (jinja)
+   ;; Add extra pairs for web mode (jinja)
    (defvar web-mode-jinja-electric-pairs '((?% . ?%) (?< . ?>)) "Electric pairs for web-mode.")
    (defun web-mode-add-jinja-electric-pairs ()
      (setq-local electric-pair-pairs (append electric-pair-pairs web-mode-jinja-electric-pairs)))
    (add-hook 'web-mode-hook 'web-mode-add-jinja-electric-pairs)
 
    ;; Subword Mode
-   (add-hook 'js-mode-hook 'subword-mode)
-   (add-hook 'c-mode-hook 'subword-mode)
-   (add-hook 'c++-mode-hook 'subword-mode)
-   (add-hook 'clojure-mode-hook 'subword-mode)
+   (add-hook 'js-mode-hook #'subword-mode)
+   (add-hook 'python-mode-hook #'subword-mode)
+   (add-hook 'c-mode-hook #'subword-mode)
+   (add-hook 'clojure-mode-hook #'subword-mode)
  #+end_src
 
 *** Prettify Symbols
