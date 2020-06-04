@@ -509,6 +509,26 @@ Nice to have packages and functionality
   (load (getenv my-abbreviations))
 #+end_src
 
+** Themes
+#+begin_src emacs-lisp
+  (when (load-theme 'dracula t)
+    ;; Don't change the font size for some headings and titles (default t)
+    (setq dracula-enlarge-headings nil)
+
+    ;; Adjust font size of titles level 1 (default 1.3)
+    (setq dracula-height-title-1 1.25)
+
+    ;; Adjust font size of titles level 2 (default 1.1)
+    (setq dracula-height-title-1 1.15)
+
+    ;; Adjust font size of titles level 3 (default 1.0)
+    (setq dracula-height-title-1 1.05)
+
+    ;; Adjust font size of document titles (default 1.44)
+    (setq dracula-height-doc-title 1.4)
+    (setq dracula-alternate-mode-line-and-minibuffer t))
+
+#+end_src
 * Elisp lessons
 #+begin_src emacs-lisp
   ;; Writing Functions in Elisp
