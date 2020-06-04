@@ -73,4 +73,7 @@
    "emacs-multiple-cursors"
 
    "emacs-tldr"
+
+   "emacs-clojure"
+   "emacs-cider"
    ))
