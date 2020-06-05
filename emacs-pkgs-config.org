@@ -600,6 +600,22 @@ Nice to have packages and functionality
     (if (<= fill-column (or number (setq number 56)))
         (message "argument %d is greater than or equal to fill-column" number)
       (message "argument %d is less than fill-column" number)))
+
+  ;; 6.3 Exercise with Narrowing
+  ;; ===========================
+
+  ;; Write a function that will display the first 60 characters of the
+  ;; current buffer, even if you have narrowed the buffer to its latter half
+  ;; so that the first line is inaccessible.  Restore point, mark, and
+  ;; narrowing.
+
+  (defun buffer-first-60-characters ()
+    "Prints the first 60 characters of the current buffer."
+    (interactive)
+    (save-restriction
+      (widen)
+      (save-excursion
+        (message (buffer-substring-no-properties 1 61)))))
 #+end_src
 * Notes
 ** Using Emacs as a Database Client
