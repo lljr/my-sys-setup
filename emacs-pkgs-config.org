@@ -254,9 +254,15 @@ manage several buffers interactively
   (elpy-enable)
   (defalias 'workon 'pyvenv-workon)
 
-  (setq python-shell-interpreter "python3"
-        elpy-rpc-python-command "python3"
-        python-shell-interpreter-args "-i")
+  (setq elpy-rpc-python-command "python3"
+
+        ;; Set up Jupyter console
+        python-shell-interpreter "jupyter"
+        python-shell-interpreter-args "console --simple-prompt"
+        python-shell-prompt-detect-failure-warning nil)
+
+  (add-to-list 'python-shell-completion-native-disabled-interpreters
+               "jupyter")
 
   (add-hook 'elpy-mode-hook (lambda () (elpy-shell-toggle-dedicated-shell 1)))
 
