@@ -264,7 +264,7 @@ manage several buffers interactively
   (add-to-list 'python-shell-completion-native-disabled-interpreters
                "jupyter")
 
-  (add-hook 'elpy-mode-hook (lambda () (elpy-shell-toggle-dedicated-shell 1)))
+  ;; (add-hook 'elpy-mode-hook (lambda () (elpy-shell-toggle-dedicated-shell 1)))
 
   (defun elpy-django-command (cmd)
     "Prompt user for Django command. If called with `C-u',
