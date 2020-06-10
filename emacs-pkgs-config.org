@@ -258,6 +258,7 @@ manage several buffers interactively
         ;; Interpreter to be used
         python-shell-interpreter "ipython"
         python-shell-interpreter-args "-i --simple-prompt")
+
   ;; (add-hook 'elpy-mode-hook (lambda () (elpy-shell-toggle-dedicated-shell 1)))
 #+END_SRC
 * Javascript
