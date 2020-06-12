@@ -52,11 +52,6 @@
     )
 
   (blink-cursor-mode 0)			; stop cursor blinking
-
-  (load-theme 'tsdh-light t)
-
-  (global-hl-line-mode +1)		; highlight current active line
-  (set-face-background 'hl-line "#f0f5ff")  ; Change default hl-line face
 #+END_SRC
 * Custom Prefix Keys
 Custom prefix keys for things I use often
