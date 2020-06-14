@@ -180,7 +180,6 @@ manage several buffers interactively
   (setq company-quickhelp-delay 3)
 #+END_SRC
 * Web Development
-
 ** Emmet
 #+BEGIN_SRC emacs-lisp
   (with-eval-after-load 'emmet-mode
