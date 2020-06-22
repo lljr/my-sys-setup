@@ -76,4 +76,6 @@
 
    "emacs-clojure"
    "emacs-cider"
+
+   "emacs-org-roam"
    ))
