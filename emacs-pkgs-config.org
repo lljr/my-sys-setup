@@ -609,7 +609,32 @@ Nice to have packages and functionality
 
   birds
 
+  ;; TIP shorten a list by setting the last element of the
+  ;; list to nil
+
   (cons 'bear '(octopus))
+
+  ; 8.7 Searching Exercises
+  ; =======================
+  ;; Write an interactive function that searches for a string.  If the
+  ;; search finds the string, leave point after it and display a message
+  ;; that says “Found!”.
+
+  (defun test-search (string)
+    "Leave point if string found."
+    (interactive "sSearch for: ")
+    (if (search-forward string nil t nil)
+        (progn
+          (point)
+          (message "Found!"))
+      (message "Not found!")))
+
+  ;;   • Write a function that prints the third element of the kill ring in
+  ;;     the echo area, if any; if the kill ring does not contain a third
+  ;;     element, print an appropriate message.
+  (defun print-kill-ring-3rd-item ()
+    (message (or (car (nthcdr 2 kill-ring)) "No third item in kill-ring.")))
+
 #+end_src
 * Notes
 ** Using Emacs as a Database Client
