@@ -653,6 +653,25 @@ Nice to have packages and functionality
   flowers ;; => (fish buttercup)
 
   more-flowers ;; => (sunflower fish buttercup)
+  ;; 10.3 Exercise
+  ;; =============
+  ;;   • Using ‘nthcdr’ and ‘car’, construct a series of expressions to
+  ;;     return the first, second, third, and fourth elements of a list.
+
+  (setq my-list '(1 2 3 4 5 6 7 8 9 0))
+
+  (car my-list)
+  1
+
+  (car (nthcdr 1 my-list))
+  2
+
+  (car (nthcdr 2 my-list))
+  3
+
+  (car (nthcdr 3 my-list))
+  4
+
 #+end_src
 * Notes
 ** Using Emacs as a Database Client
