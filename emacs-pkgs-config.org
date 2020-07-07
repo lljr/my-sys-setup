@@ -34,6 +34,9 @@
   ;; Extra manuals
   (add-to-list 'Info-default-directory-list "~/Documents/Info")
 
+  ;; Increase default max recursion depth
+  (setq max-specpdl-size 19500)
+  (setq max-lisp-eval-depth 24000)
 #+END_SRC
 * Changes to default Emacs UI
 #+BEGIN_SRC emacs-lisp
