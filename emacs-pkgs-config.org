@@ -675,6 +675,35 @@ Nice to have packages and functionality
   (car (nthcdr 3 my-list))
   4
 
+  ;;11.4 Looping Exercise
+  ;;=====================
+  ;;
+  ;;   • Write a function similar to ‘triangle’ in which each row has a
+  ;;     value which is the square of the row number.  Use a ‘while’ loop.
+
+  (defun triangle-squared (number-of-rows)
+    (let ((total 0)
+          (row-num 1))
+      (while (<= row-num number-of-rows)
+        (setq total (+ total (* row-num row-num)))
+        (setq row-num (1+ row-num)))
+      total))
+
+  (triangle-squared 1)
+  1
+  (triangle-squared 2)
+  5
+  (triangle-squared 3)
+  14
+
+  ;; • Write a function similar to ‘triangle’ that multiplies instead of
+  ;;   adds the values.
+
+  (defun triangle-multiply (num-of-rows)
+    "Multiply the number of rows of pebbles in a triangle."
+    (let ((total 1))
+      (dotimes (number num-of-rows total)
+         (setq total (* total (1+ number)))))) ; 1+ needed because dotimes is 0 indexed
 #+end_src
 * Notes
 ** Using Emacs as a Database Client
