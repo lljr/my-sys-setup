@@ -704,6 +704,30 @@ Nice to have packages and functionality
     (let ((total 1))
       (dotimes (number num-of-rows total)
          (setq total (* total (1+ number)))))) ; 1+ needed because dotimes is 0 indexed
+
+  ;; • Rewrite these two functions recursively.  Rewrite these functions
+  ;;   using ‘cond’.
+
+  (defun triangle-square-recursive (num-of-rows)
+    (if (= num-of-rows 1)
+        1
+      (+ (* num-of-rows num-of-rows) (triangle-square-recursive (1- num-of-rows)))))
+
+  (defun triangle-multiply-recursive (number)
+    "Multiply the number of rows of pebbles in a triangle recursively."
+    (if (= number 1)
+        1
+      (* number (triangle-multiply-recursive (1- number)))))
+
+  (defun triangle-squared-recursive-cond (number)
+    (cond
+     ((<= number 1) 1)
+     ((> number 1) (+ (* number number) (triangle-squared-recursive-cond (1- number))))))
+
+  (defun triangle-multiply-recursive-cond (number)
+    "Multiply the number of rows of pebbles in a triangle recursively using cond."
+    (cond ((<= number 1) 1)
+          ((> number 1) (* number (triangle-multiply-recursive-cond (1- number))))))
 #+end_src
 * Notes
 ** Using Emacs as a Database Client
