@@ -73,6 +73,7 @@
    "emacs-multiple-cursors"
 
    "emacs-tldr"
+   "emacs-restclient"
 
    "emacs-clojure"
    "emacs-cider"
