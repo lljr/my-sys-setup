@@ -41,14 +41,13 @@
    "artanis"
    "haunt" "guile-commonmark"
    "guile-reader" "guile-lib"
-   "skribilo"
-
 
    ;; Emacs Packages
    "emacs-guix"
    "emacs-geiser"
    "emacs-magit"
-   "emacs-ivy" "emacs-ivy-rich"
+   "emacs-counsel"
+   "emacs-ivy"
    "emacs-company"
    "emacs-companyquickhelp"
    "emacs-org"
@@ -74,9 +73,6 @@
 
    "emacs-tldr"
    "emacs-restclient"
-
-   "emacs-clojure"
-   "emacs-cider"
 
    "emacs-org-roam"
    ))
