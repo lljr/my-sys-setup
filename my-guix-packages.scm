@@ -16,6 +16,9 @@
    "qbittorrent"
    "blender"
    "vlc"
+   "docker"
+   "docker-cli"
+   "docker-compose"
 
    "imagemagick"
 
