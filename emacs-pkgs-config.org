@@ -1,5 +1,5 @@
 #+STARTUP: overview hidestars
-#+AUTHOR: Jonathan Rostran L
+#+AUTHOR: Jonathan Rostran
 #+PROPERTY: header-args:emacs-lisp :tangle ~/.emacs.d/init.el :comments no :results silent
 
 * General Emacs Setup
