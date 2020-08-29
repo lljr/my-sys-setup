@@ -49,7 +49,6 @@
    "emacs-org"
    "emacs-dashboard"
 
-   "emacs-js2-mode"
    "emacs-elpy"
    "emacs-emmet-mode"
    "emacs-web-mode"
