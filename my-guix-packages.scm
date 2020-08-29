@@ -1,7 +1,6 @@
 (specifications->manifest
  '(; --On Foreign Distro
    "glibc-locales"
-                                        ;
 
    ;; Fonts
    "gs-fonts" "font-dejavu" "font-gnu-freefont-ttf"
@@ -9,7 +8,6 @@
    ;; Certs
    "nss-certs"
    ; --
-
 
    ;; Apps
    "emacs"
@@ -24,7 +22,6 @@
    ;; Manuals
    "sicp"
 
-
    ;; Programs/Tools
    "git"
    "node"
@@ -35,7 +32,6 @@
    "mcron"
    "lout"
    "global"
-
 
    ;; Guile
    "artanis"
