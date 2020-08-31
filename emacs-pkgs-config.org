@@ -39,6 +39,9 @@
   ;; Increase default max recursion depth
   (setq max-specpdl-size 19500)
   (setq max-lisp-eval-depth 24000)
+
+  ;; Pick up global NPM packages
+  (add-to-list 'exec-path "~/node_modules/.bin")
 #+END_SRC
 * Changes to default Emacs UI
 #+BEGIN_SRC emacs-lisp
