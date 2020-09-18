@@ -57,6 +57,9 @@
    "emacs-web-mode"
    "emacs-ggtags"
 
+   "emacs-docker"
+   "emacs-dockerfile-mode"
+
    "emacs-circe"
    "emacs-pdf-tools"
 
