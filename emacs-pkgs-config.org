@@ -228,6 +228,11 @@ manage several buffers interactively
 
 #+END_SRC
 
+* TODO Eglot
+#+begin_src emacs-lisp
+
+#+end_src
+
 * Python
 #+BEGIN_SRC emacs-lisp
   (elpy-enable)
