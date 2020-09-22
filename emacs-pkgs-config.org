@@ -107,10 +107,12 @@ Custom prefix keys for things I use often
 
   (ivy-mode 1)
 
+  (counsel-mode)
+
   ;; Bind keys
 
-  ;; (global-set-key (kbd "C-c j") 'counsel-git-grep)
-  ;; (global-set-key (kbd "C-x l") 'counsel-locate)
+  (global-set-key (kbd "C-c j") 'counsel-git-grep)
+  (global-set-key (kbd "C-x l") 'counsel-locate)
 
   (global-set-key (kbd "s-s") 'counsel-grep-or-swiper)
   (global-set-key (kbd "C-c j") 'counsel-git-grep)
