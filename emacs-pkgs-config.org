@@ -11,6 +11,9 @@
    tab-width 4 				            ; change default tab width
    )
 
+  (setq gc-cons-threshold 50000000)
+  (setq large-file-warning-threshold 100000000)
+
   (load-theme 'tango-dark t nil)
 
   ;; toggle features that are turned off in a fresh Emacs install
