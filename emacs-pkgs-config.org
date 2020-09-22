@@ -120,29 +120,7 @@ Custom prefix keys for things I use often
   ;; Custom prefix key
   (define-key my-super-z-map (kbd "f") 'swiper) ; fuzy search in files
 
-  ;; Ivy Rich
-  (ivy-rich-mode 1)
-  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
 
-  ;; Ivy Actions
-
-    ;;; == Define actions
-  (defun my-comment-line-action (_line)
-    "Comment or uncomment currently selected LINE.
-       This function is intended as a `swiper' action."
-    (comment-or-uncomment-region (line-beginning-position)
-                                 (line-end-position)))
-
-  (defun my-kill-line-action (_line)
-    "Kill currently selected LINE.
-       This function is intended as a `swiper' action."
-    (kill-whole-line 1))
-
-    ;;; == Add actions
-  (ivy-add-actions
-   'swiper
-   '(;;(";" my-comment-line-action "comment line")
-     ("k" my-kill-line-action "kill whole line")))
 #+END_SRC
 * Dired
 #+BEGIN_SRC emacs-lisp
