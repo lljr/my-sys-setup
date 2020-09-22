@@ -94,8 +94,6 @@ Custom prefix keys for things I use often
 
 * Ivy
 #+BEGIN_SRC emacs-lisp
-  (counsel-mode)
-
   ;; (setq counsel-grep-base-command
   ;;     "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
 
