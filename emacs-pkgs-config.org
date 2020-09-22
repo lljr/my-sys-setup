@@ -175,6 +175,12 @@ manage several buffers interactively
 
   (setq magit-completing-read-function 'ivy-completing-read)
 #+END_SRC
+* Yasnippet
+#+begin_src emacs-lisp
+  (with-eval-after-load 'yasnippet
+    (add-to-list 'yas-snippet-dirs "~/src/guix/etc/snippets"))
+#+end_src
+
 * Company
 #+BEGIN_SRC emacs-lisp
   (add-hook 'after-init-hook 'global-company-mode)
