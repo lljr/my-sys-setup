@@ -751,3 +751,14 @@ export XDG_DATA_DIRS="${GUIX_PROFILE}/share${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS"
 *** locales not being found issue
     in ~/etc/systemd/system/guix-daemon.service~, there should be a line
     that starts with ~Envionment=...~, this should read ~Envionment[filtered]=...~
+* TODO Things to improve
+** TODO Make this function work on active region
+   Originally gotten from https://emacs.stackexchange.com/a/41619/29129
+ #+begin_src emacs-lisp
+   (defun markdown-convert-buffer-to-org ()
+     "Convert the current buffer's content from markdown to orgmode format and save it with the current buffer's file name but with .org extension."
+     (interactive)
+     (shell-command-on-region (point-min) (point-max)
+                              (format "pandoc -f markdown -t org -o %s"
+                                      (concat (file-name-sans-extension (buffer-file-name)) ".org"))))
+ #+end_src
