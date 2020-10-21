@@ -183,6 +183,11 @@ manage several buffers interactively
   (company-quickhelp-mode)
   (setq company-quickhelp-delay 3)
 #+END_SRC
+
+* Javascript
+  #+begin_src emacs-lisp
+    (setq js-indent-level 2)
+  #+end_src
 * Web Development
 ** Emmet
 #+BEGIN_SRC emacs-lisp
