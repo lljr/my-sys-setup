@@ -162,12 +162,6 @@ manage several buffers interactively
 
   (setq magit-completing-read-function 'ivy-completing-read)
 #+END_SRC
-* Yasnippet
-#+begin_src emacs-lisp
-  (with-eval-after-load 'yasnippet
-    (add-to-list 'yas-snippet-dirs "~/src/guix/etc/snippets"))
-#+end_src
-
 * Company
 #+BEGIN_SRC emacs-lisp
   (add-hook 'after-init-hook 'global-company-mode)
@@ -241,11 +235,6 @@ manage several buffers interactively
 
 #+END_SRC
 
-* TODO Eglot
-#+begin_src emacs-lisp
-
-#+end_src
-
 * Python
 #+BEGIN_SRC emacs-lisp
   (elpy-enable)
@@ -258,10 +247,30 @@ manage several buffers interactively
 
   ;; (add-hook 'elpy-mode-hook (lambda () (elpy-shell-toggle-dedicated-shell 1)))
 #+END_SRC
+
+* Projectile
+#+begin_src
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
+#+end_src
+* Yasnippet
+#+begin_src emacs-lisp
+  (with-eval-after-load 'yasnippet
+    (add-to-list 'yas-snippet-dirs "~/src/guix/etc/snippets")
+    (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
+    (yas-reload-all)
+    (add-hook 'js-mode-hook #'yas-minor-mode))
+#+end_src
+
 * Clojure
 #+begin_src emacs-lisp
   (setq cider-font-lock-dynamically '(macro core function var))
   (setq cider-eval-result-prefix ";; => ")
+#+end_src
+
+* TODO Eglot
+#+begin_src emacs-lisp
+
 #+end_src
 
 * Scheme

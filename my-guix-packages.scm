@@ -76,4 +76,6 @@
    "emacs-restclient"
 
    "emacs-org-roam"
+
+   "emacs-yasnippet"
    ))
