@@ -223,11 +223,6 @@ manage several buffers interactively
   ;; (add-hook 'elpy-mode-hook (lambda () (elpy-shell-toggle-dedicated-shell 1)))
 #+END_SRC
 
-* Projectile
-#+begin_src
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
-#+end_src
 * Yasnippet
 #+begin_src emacs-lisp
   (with-eval-after-load 'yasnippet
