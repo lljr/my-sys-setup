@@ -101,6 +101,7 @@ Custom prefix keys for things I use often
                           (registers . 5)))
 #+end_src
 * Selectrum / CtrlF
+  Better buffer search and improved minibuffer experience
   #+begin_src emacs-lisp
     (selectrum-mode +1)
     (ctrlf-mode +1)
