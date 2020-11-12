@@ -100,37 +100,11 @@ Custom prefix keys for things I use often
                           (agenda . 5)
                           (registers . 5)))
 #+end_src
-
-* Ivy
-#+BEGIN_SRC emacs-lisp
-  ;; (setq counsel-grep-base-command
-  ;;     "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
-
-  ;; Ivy
-  (setq ivy-use-virtual-buffers t
-        enable-recursive-minibuffers t
-        ivy-count-format "%d/%d "
-        ivy-display-style 'fancy)
-
-  (ivy-mode 1)
-
-  (counsel-mode)
-
-  ;; Bind keys
-
-  (global-set-key (kbd "C-c j") 'counsel-git-grep)
-  (global-set-key (kbd "C-x l") 'counsel-locate)
-
-  (global-set-key (kbd "s-s") 'counsel-grep-or-swiper)
-  (global-set-key (kbd "C-c j") 'counsel-git-grep)
-  (global-set-key (kbd "C-c f") 'counsel-git)
-  (global-set-key (kbd "C-c C-r") 'ivy-resume)
-
-  ;; Custom prefix key
-  (define-key my-super-z-map (kbd "f") 'swiper) ; fuzy search in files
-
-
-#+END_SRC
+* Selectrum / CtrlF
+  #+begin_src emacs-lisp
+    (selectrum-mode +1)
+    (ctrlf-mode +1)
+  #+end_src
 * Dired
 #+BEGIN_SRC emacs-lisp
   (setq dired-recursive-copies (quote always) ; “always” means no asking
