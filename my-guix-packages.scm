@@ -42,11 +42,14 @@
    "guile-reader" "guile-lib"
 
    ;; Emacs Packages
+   ;; == MUST HAVE ==
+   "emacs-selectrum"
+   "emacs-ctrlf"
+   ;; ===============
+
    "emacs-guix"
    "emacs-geiser"
    "emacs-magit"
-   "emacs-counsel"
-   "emacs-ivy"
    "emacs-company"
    "emacs-companyquickhelp"
    "emacs-org"
