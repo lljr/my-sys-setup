@@ -246,7 +246,6 @@ manage several buffers interactively
 
   (with-eval-after-load 'geiser-guile
     (add-to-list 'geiser-guile-load-path "~/src/guix"))
-
 #+end_src
 
 * GGtags
