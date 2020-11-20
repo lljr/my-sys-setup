@@ -70,6 +70,7 @@
    "emacs-iedit"
    "emacs-htmlize"
    "emacs-org-reveal"
+   "emacs-org-tree-slide"
    "emacs-rainbow-delimiters"
    "emacs-npm-mode"
    "emacs-dired-du"
