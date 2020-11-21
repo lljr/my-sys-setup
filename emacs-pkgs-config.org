@@ -54,6 +54,12 @@
 
   ;; Just kill the current buffer
   (global-set-key (kbd "C-x k") 'kill-this-buffer)
+
+
+  ;; workaround for buffers with long lines of chars
+  (setq-default bidi-paragraph-direction 'left-to-right) ; just work with left to right langs
+  (setq bidi-inhibit-bpa t)
+  (global-so-long-mode 1)
 #+END_SRC
 * Changes to default Emacs UI
 #+BEGIN_SRC emacs-lisp
