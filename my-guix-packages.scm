@@ -40,6 +40,7 @@
    "artanis"
    "haunt" "guile-commonmark"
    "guile-reader" "guile-lib"
+   "guile-colorized"
 
    ;; Emacs Packages
    ;; == MUST HAVE ==
