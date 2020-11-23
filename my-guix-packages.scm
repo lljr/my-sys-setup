@@ -29,7 +29,7 @@
    "git"
    "node"
    "openjdk"
-   "guile"
+
    "recutils"
    "wget2"
    "mcron"
@@ -37,10 +37,12 @@
    "global"
 
    ;; Guile
+   "guile"
    "artanis"
    "haunt" "guile-commonmark"
    "guile-reader" "guile-lib"
    "guile-colorized"
+   "guile-readline"
 
    ;; Emacs Packages
    ;; == MUST HAVE ==
