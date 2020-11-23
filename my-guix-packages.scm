@@ -9,6 +9,10 @@
    "nss-certs"
    ; --
 
+   ;; Langs
+   "kawa"
+   "racket"
+
    ;; Apps
    "emacs"
    "gimp"
