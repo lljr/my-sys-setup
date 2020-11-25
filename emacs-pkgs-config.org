@@ -112,6 +112,8 @@ Custom prefix keys for things I use often
   Better buffer search and improved minibuffer experience
   #+begin_src emacs-lisp
     (selectrum-mode +1)
+    (setq file-name-shadow-properties
+          '(invisible t))
     (ctrlf-mode +1)
   #+end_src
 * Dired
