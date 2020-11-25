@@ -12,6 +12,7 @@
    ;; Langs
    "kawa"
    "racket"
+   "gambit-c"
 
    ;; Apps
    "emacs"
@@ -52,7 +53,9 @@
    ;; == MUST HAVE ==
    "emacs-selectrum"
    "emacs-ctrlf"
+   "emacs-prescient"
    ;; ===============
+
 
    "emacs-guix"
    "emacs-geiser"

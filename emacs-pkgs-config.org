@@ -328,6 +328,11 @@ manage several buffers interactively
      (latex . t)
      (python . t)
      (ditaa . t)))
+
+  ;; Org Tree Slide setup
+  (with-eval-after-load 'org-tree-slide-mode
+    (org-image-actual-width nil))
+
 #+end_src
 * PDF Tools
 #+BEGIN_SRC emacs-lisp
