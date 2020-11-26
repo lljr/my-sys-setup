@@ -78,8 +78,6 @@
     )
 
   (blink-cursor-mode 0)			; stop cursor blinking
-
-  (global-hl-line-mode) ;; highlight current line in all buffers
 #+END_SRC
 * Custom Prefix Keys
 Custom prefix keys for things I use often
