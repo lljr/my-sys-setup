@@ -59,7 +59,6 @@
 
    "emacs-guix"
    "emacs-geiser"
-   "emacs-magit"
    "emacs-company"
    "emacs-companyquickhelp"
    "emacs-org"
