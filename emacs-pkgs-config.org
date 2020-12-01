@@ -122,6 +122,10 @@ Custom prefix keys for things I use often
 
     (ctrlf-mode +1)
   #+end_src
+* VC
+  #+begin_src emacs-lisp
+    (setq auto-revert-check-vc-info t)
+  #+end_src
 * Dired
 #+BEGIN_SRC emacs-lisp
   (setq dired-recursive-copies (quote always) ; “always” means no asking
