@@ -128,8 +128,8 @@ Custom prefix keys for things I use often
   #+end_src
 * Dired
 #+BEGIN_SRC emacs-lisp
-  (setq dired-recursive-copies (quote always) ; “always” means no asking
-        dired-recursive-deletes (quote top) ; “top” means ask once
+  (setq dired-recursive-copies 'always ; “always” means no asking
+        dired-recursive-deletes 'top ; “top” means ask once
         dired-dwim-target t)
 
   (add-hook 'dired-mode-hook '(lambda ()
@@ -137,7 +137,7 @@ Custom prefix keys for things I use often
 
   (put 'dired-find-alternate-file 'disabled nil)
 
-  ;;(add-hook 'dired-mode-hook #'dired-du-mode)
+  (add-hook 'dired-mode-hook #'dired-du-mode)
 #+END_SRC
 * Ibuffer
 manage several buffers interactively
