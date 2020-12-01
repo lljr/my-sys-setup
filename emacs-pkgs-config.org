@@ -141,8 +141,6 @@ Custom prefix keys for things I use often
                                 (dired-hide-details-mode 1)))
 
   (put 'dired-find-alternate-file 'disabled nil)
-
-  (add-hook 'dired-mode-hook #'dired-du-mode)
 #+END_SRC
 * Ibuffer
 manage several buffers interactively
