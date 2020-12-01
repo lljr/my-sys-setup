@@ -54,6 +54,7 @@
    "emacs-selectrum"
    "emacs-ctrlf"
    "emacs-prescient"
+   "emacs-magit"
    ;; ===============
 
 
