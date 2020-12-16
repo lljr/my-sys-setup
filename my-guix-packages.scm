@@ -92,4 +92,6 @@
    "emacs-org-roam"
 
    "emacs-yasnippet"
+
+   "emacs-project"
    ))
