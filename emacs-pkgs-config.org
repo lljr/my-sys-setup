@@ -100,12 +100,13 @@ Custom prefix keys for things I use often
 * Dashboard
 #+begin_src emacs-lisp
   (dashboard-setup-startup-hook)
-  (setq
-   dashboard-center-content t
-   dashboard-items '((recents  . 10)
-                     (bookmarks . 5)
-                     (agenda . 5)
-                     (registers . 5)))
+  (setq dashboard-center-content t
+        dashboard-projects-backend 'project-el
+        dashboard-items '((projects . 10)
+                          (recents  . 10)
+                          (bookmarks . 3)
+                          (agenda . 3)
+                          (registers . 3)))
 #+end_src
 * Selectrum / CtrlF
   Better buffer search and improved minibuffer experience
