@@ -5,11 +5,11 @@
 * General Emacs Setup
 #+BEGIN_SRC emacs-lisp
   (setq-default inhibit-startup-message t ; don't show default emacs startup screen
-   window-combination-resize t            ; Resize windows proportionally
-   display-time-default-load-average nil  ; don't show system load time in modeline
-   indent-tabs-mode nil                   ; stop using tabs to indent
-   tab-width 4 				            ; change default tab width
-   )
+                window-combination-resize t            ; Resize windows proportionally
+                display-time-default-load-average nil  ; don't show system load time in modeline
+                indent-tabs-mode nil                   ; stop using tabs to indent
+                tab-width 4 				            ; change default tab width
+                )
 
   (setq gc-cons-threshold 50000000)
   (setq large-file-warning-threshold 100000000)
@@ -33,8 +33,8 @@
   ;; Useful functionality
   (add-hook 'before-save-hook 'delete-trailing-whitespace) ; remove trailing whitespace on save
   (add-hook 'after-save-hook
-    ;; Emacs will make a script file executable if it decides it is one
-    'executable-make-buffer-file-executable-if-script-p)
+            ;; Emacs will make a script file executable if it decides it is one
+            'executable-make-buffer-file-executable-if-script-p)
 
   ;; Extra manuals
   (add-to-list 'Info-default-directory-list "~/Documents/Info")
@@ -60,6 +60,15 @@
   (setq-default bidi-paragraph-direction 'left-to-right) ; just work with left to right langs
   (setq bidi-inhibit-bpa t)
   (global-so-long-mode 1)
+
+  ;; Keep transient cruft out of ~/.emacs.d/
+  ;; NOTE: Mostly need this cause EmberJS will catch transient files
+  ;; and fail to build
+  (setq user-emacs-directory "~/.cache/emacs/"
+        backup-directory-alist `(("." . ,(expand-file-name "backups" user-emacs-directory)))
+        url-history-file (expand-file-name "url/history" user-emacs-directory)
+        auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-emacs-directory)
+        projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-emacs-directory))
 #+END_SRC
 * Changes to default Emacs UI
 #+BEGIN_SRC emacs-lisp
