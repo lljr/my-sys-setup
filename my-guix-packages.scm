@@ -21,6 +21,8 @@
    "qbittorrent"
    "blender"
    "vlc"
+   "gash" ;; shell written in GNU Guile
+
    ;; "docker"
    ;; "docker-cli"
    ;; "docker-compose"
