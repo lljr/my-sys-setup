@@ -21,6 +21,8 @@
    "qbittorrent"
    "blender"
    "vlc"
+   "qgis"
+   "freecad"
    "gash" ;; shell written in GNU Guile
 
    ;; "docker"
