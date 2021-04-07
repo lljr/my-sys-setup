@@ -14,6 +14,9 @@
   (setq gc-cons-threshold 50000000)
   (setq large-file-warning-threshold 100000000)
 
+
+
+
   (load-theme 'leuven nil)
 
   ;; toggle features that are turned off in a fresh Emacs install
@@ -60,6 +63,7 @@
   (setq-default bidi-paragraph-direction 'left-to-right) ; just work with left to right langs
   (setq bidi-inhibit-bpa t)
   (global-so-long-mode 1)
+
 #+END_SRC
 * Changes to default Emacs UI
 #+BEGIN_SRC emacs-lisp
@@ -99,14 +103,15 @@ Custom prefix keys for things I use often
 #+END_SRC
 * Dashboard
 #+begin_src emacs-lisp
-  (dashboard-setup-startup-hook)
   (setq dashboard-center-content t
         dashboard-projects-backend 'project-el
-        dashboard-items '((projects . 10)
-                          (recents  . 10)
-                          (bookmarks . 3)
-                          (agenda . 3)
-                          (registers . 3)))
+        ;; dashboard-items '((projects . 5)
+        ;;                   (recents  . 10)
+        ;;                   (bookmarks . 3)
+        ;;                   (agenda . 3)
+        ;;                   (registers . 3))
+        )
+  (dashboard-setup-startup-hook)
 #+end_src
 * Selectrum / CtrlF
   Better buffer search and improved minibuffer experience
@@ -163,11 +168,17 @@ manage several buffers interactively
   ;; Company quickhelp adds a pop-up description for the function
   ;; completion candidate
   (company-quickhelp-mode)
-  (setq company-quickhelp-delay 3)
+  (setq company-quickhelp-delay 2)
 #+END_SRC
 * Javascript
   #+begin_src emacs-lisp
     (setq js-indent-level 2)
+
+    (eval-after-load 'js-mode
+      '(add-hook 'js-mode-hook #'add-node-modules-path))
+
+    (eval-after-load 'clojure-mode
+      '(add-hook 'clojure-mode-hook #'add-node-modules-path))
   #+end_src
 * Web Development
 ** Emmet
@@ -346,18 +357,6 @@ manage several buffers interactively
 #+BEGIN_SRC emacs-lisp
   (pdf-loader-install)
 #+END_SRC
-* Circe
-Client for IRC
-#+begin_src emacs-lisp
-  (setq circe-network-options
-        '(("Freenode"
-        ;;   :tls t
-      ;;     :nick "my-nick"
-    ;;       :sasl-username "my-nick"
-  ;;         :sasl-password "my-password"
-          ;; :channels ("#emacs-circe")
-           )))
-#+end_src
 * Extras
 Nice to have packages and functionality
 ** Already in Emacs
@@ -484,16 +483,10 @@ Nice to have packages and functionality
   (setenv my-abbreviations "~/my-sys-setup/my-abbrevs.el")
   (load (getenv my-abbreviations))
 #+end_src
+** set up PATH to work with cider-jack-in-cljs
+   #+begin_src emacs-lisp
 
-* Guix
-#+begin_src emacs-lisp
-  ;; (setq user-full-name "Jonathan")
-  ;; (setq user-mail-address "")
-  ;; ;; Assuming the Guix checkout is in ~/src/guix.
-  ;; (load-file "~/src/guix/etc/copyright.el") ;; TODO wrap in function that checks if ~/src exists
-;; (add-hook 'after-save-hook 'copyright-update)
-#+end_src
-
+   #+end_src
 * Elisp lessons
 #+begin_src emacs-lisp
   ;; Writing Functions in Elisp
@@ -760,14 +753,21 @@ export XDG_DATA_DIRS="${GUIX_PROFILE}/share${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS"
 *** locales not being found issue
     in ~/etc/systemd/system/guix-daemon.service~, there should be a line
     that starts with ~Envionment=...~, this should read ~Envionment[filtered]=...~
-* TODO Things to improve
-** TODO Make this function work on active region
-   Originally gotten from https://emacs.stackexchange.com/a/41619/29129
- #+begin_src emacs-lisp
-   (defun markdown-convert-buffer-to-org ()
-     "Convert the current buffer's content from markdown to orgmode format and save it with the current buffer's file name but with .org extension."
-     (interactive)
-     (shell-command-on-region (point-min) (point-max)
-                              (format "pandoc -f markdown -t org -o %s"
-                                      (concat (file-name-sans-extension (buffer-file-name)) ".org"))))
- #+end_src
+* TODO EXECPATH CLJS FIX
+  #+begin_src emacs-lisp
+    (defun set-exec-path-from-shell-PATH ()
+      "Set up Emacs' `exec-path' and PATH environment variable to match
+    that used by the user's shell.
+
+    This is particularly useful under Mac OS X and macOS, where GUI
+    apps are not started from a shell."
+      (interactive)
+      (let ((path-from-shell (replace-regexp-in-string
+                  "[ \t\n]*$" "" (shell-command-to-string
+                          "$SHELL --login -c 'echo $PATH'"
+                                ))))
+        (setenv "PATH" path-from-shell)
+        (setq exec-path (split-string path-from-shell path-separator))))
+
+    (set-exec-path-from-shell-PATH)
+  #+end_src
