@@ -173,12 +173,6 @@ manage several buffers interactively
 * Javascript
   #+begin_src emacs-lisp
     (setq js-indent-level 2)
-
-    (eval-after-load 'js-mode
-      '(add-hook 'js-mode-hook #'add-node-modules-path))
-
-    (eval-after-load 'clojure-mode
-      '(add-hook 'clojure-mode-hook #'add-node-modules-path))
   #+end_src
 * Web Development
 ** Emmet
@@ -753,21 +747,9 @@ export XDG_DATA_DIRS="${GUIX_PROFILE}/share${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS"
 *** locales not being found issue
     in ~/etc/systemd/system/guix-daemon.service~, there should be a line
     that starts with ~Envionment=...~, this should read ~Envionment[filtered]=...~
-* TODO EXECPATH CLJS FIX
+* Exec-path setup
+  To use Node with NVM use this
   #+begin_src emacs-lisp
-    (defun set-exec-path-from-shell-PATH ()
-      "Set up Emacs' `exec-path' and PATH environment variable to match
-    that used by the user's shell.
-
-    This is particularly useful under Mac OS X and macOS, where GUI
-    apps are not started from a shell."
-      (interactive)
-      (let ((path-from-shell (replace-regexp-in-string
-                  "[ \t\n]*$" "" (shell-command-to-string
-                          "$SHELL --login -c 'echo $PATH'"
-                                ))))
-        (setenv "PATH" path-from-shell)
-        (setq exec-path (split-string path-from-shell path-separator))))
-
-    (set-exec-path-from-shell-PATH)
+    (exec-path-from-shell-copy-env "PATH")
+    (exec-path-from-shell-initialize)
   #+end_src
