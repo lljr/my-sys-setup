@@ -332,6 +332,7 @@ manage several buffers interactively
                   cmd
                   cmd))
           )
+    (setq org-catch-invisible-edits t)
     )
 
 
