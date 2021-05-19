@@ -55,9 +55,10 @@
 
    ;; Emacs Packages
    ;; == MUST HAVE ==
-   "emacs-selectrum"
-   "emacs-ctrlf"
-   "emacs-prescient"
+   "emacs-vertico"
+   "emacs-orderless"
+   "emacs-marginalia"
+   "emacs-consult"
    "emacs-magit"
    ;; ===============
 
